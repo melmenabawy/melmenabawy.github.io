@@ -24,34 +24,194 @@
     }
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; font-size: 17px; }
-  main { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
-  h1 { font-size: 1.7em; margin: 0 0 4px; }
-  .subtitle { color: var(--muted); margin: 0 0 32px; font-size: 0.95em; }
-  h2 { font-size: 1.15em; margin: 32px 0 8px; border-top: 1px solid var(--rule); padding-top: 20px; }
-  section:first-of-type h2 { border-top: none; padding-top: 0; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    font-size: 17px;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+  h1 {
+    font-size: 1.7em;
+    margin: 0 0 4px;
+  }
+  .subtitle {
+    color: var(--muted);
+    margin: 0 0 32px;
+    font-size: 0.95em;
+  }
+  h2 {
+    font-size: 1.15em;
+    margin: 32px 0 8px;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  section:first-of-type h2 {
+    border-top: none;
+    padding-top: 0;
+  }
   p { margin: 0 0 12px; }
   a { color: var(--accent); word-break: break-word; }
-  footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.85em; }
-  @media (max-width: 480px) { body { font-size: 16px; } main { padding: 24px 16px 48px; } }
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.85em;
+  }
+  .lang { display: none; }
+  .lang.active { display: block; }
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    main { padding: 24px 16px 48px; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <h1>Privacy Policy</h1>
-  <p class="subtitle">Quotation Manager · Effective date: August 7, 2026</p>
-  <section><h2>1. Information Stored in the App</h2><p>Quotation Manager stores the business information you enter directly into the app, including:</p><p>company details you create (name, contact information, addresses, logo, tax settings); customer details (names, contacts, addresses); contacts and addresses associated with your companies and customers; quotation information, including line items, pricing, quantities, taxes, discounts, and notes; catalog and price-list data you configure; and app preferences and settings (appearance, language, security options, business defaults).</p></section>
-  <section><h2>2. Local Storage</h2><p>All of this information is stored locally on your device by the app. Quotation Manager does not transmit this information to, or store it on, any servers operated by the developer. The developer has no ability to view, access, or retrieve your business data.</p></section>
-  <section><h2>3. PDF Generation and Sharing</h2><p>Quotation Manager generates PDF quotation documents locally on your device. Sharing or exporting a PDF only happens when you choose to share it, using the standard iOS share sheet. Once you share a PDF with another app, service, or contact, that recipient handles the file under its own privacy practices, which are not covered by this policy.</p></section>
-  <section><h2>4. Purchases and Subscriptions</h2><p>Quotation Manager Pro is offered as an auto-renewable subscription, purchased and managed entirely through Apple's App Store using StoreKit. Purchases are processed by Apple; the developer does not receive your full payment card details. Apple may process your purchase, account, and subscription information under Apple's own privacy policy. The app receives only the subscription status/entitlement information needed to unlock Pro features.</p><p>Because subscriptions are managed by Apple, your Quotation Manager Pro entitlement can be restored on another device signed in with the same Apple ID, using the in-app Restore Purchases option. This entitlement restoration is separate from your business data — your companies, customers, and quotations are not synced between devices by Quotation Manager.</p></section>
-  <section><h2>5. Tracking, Analytics, and Advertising</h2><p>Quotation Manager does not show advertising, does not track you across other companies' apps or websites, and does not currently use any analytics or telemetry SDK. The app does not sell your personal data.</p></section>
-  <section><h2>6. Backups</h2><p>Because your business data is stored locally by the app, it may be included in backups you make of your device — for example, an iCloud device backup or a local computer backup — depending on your own iOS/iPadOS and Apple ID settings. This backup behavior is controlled by Apple and your device configuration, not by any developer-operated cloud synchronization service. Quotation Manager itself does not sync your business data between devices.</p></section>
-  <section><h2>7. Data Retention and Deletion</h2><p>Your business data remains stored locally until you delete it yourself within the app, remove it through app functionality, or erase your device or its storage. Uninstalling the app may remove its locally stored data from your device, subject to Apple's own backup and restore behavior.</p></section>
-  <section><h2>8. Children's Privacy</h2><p>Quotation Manager is a general-purpose business tool intended for business owners and professionals, and it is not directed to children. We do not knowingly collect information from children, and the app is not intended for use by children.</p></section>
-  <section><h2>9. Changes to This Policy</h2><p>We may update this Privacy Policy as the app evolves. Material changes will be reflected by an updated effective date above, and continued use of the app after an update constitutes acceptance of the revised policy. Within the app, an updated legal document may require your acceptance again before continued use.</p></section>
-  <section><h2>10. Contact</h2><p>You can reach the developer using the contact details provided on Quotation Manager's official App Store listing.</p></section>
-  <footer><p>This page contains no analytics, cookies, or third-party trackers.</p></footer>
+  <div class="lang active" id="en">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Quotation Manager · Effective date: August 7, 2026</p>
+
+    <section>
+      <h2>1. Information Stored in the App</h2>
+      <p>Quotation Manager stores the business information you enter directly into the app, including company details you create (name, contact information, addresses, logo, tax settings), customer details (names, contacts, addresses), contacts and addresses associated with your companies and customers, quotation information (line items, pricing, quantities, taxes, discounts, and notes), catalog and price-list data you configure, and app preferences and settings.</p>
+    </section>
+
+    <section>
+      <h2>2. Local Storage</h2>
+      <p>All of this information is stored locally on your device by the app. Quotation Manager does not transmit this information to, or store it on, any servers operated by the developer. The developer has no ability to view, access, or retrieve your business data.</p>
+    </section>
+
+    <section>
+      <h2>3. PDF Generation and Sharing</h2>
+      <p>Quotation Manager generates PDF quotation documents locally on your device. Sharing or exporting a PDF only happens when you choose to share it, using the standard iOS share sheet. Once you share a PDF with another app, service, or contact, that recipient handles the file under its own privacy practices, which are not covered by this policy.</p>
+    </section>
+
+    <section>
+      <h2>4. Purchases and Subscriptions</h2>
+      <p>Quotation Manager Pro is offered as an auto-renewable subscription, purchased and managed entirely through Apple's App Store using StoreKit. Purchases are processed by Apple; the developer does not receive your full payment card details. Apple may process your purchase, account, and subscription information under Apple's own privacy policy. The app receives only the subscription status and entitlement information needed to unlock Pro features.</p>
+      <p>Because subscriptions are managed by Apple, your Quotation Manager Pro entitlement can be restored on another device signed in with the same Apple ID, using the in-app Restore Purchases option. This entitlement restoration is separate from your business data; your companies, customers, and quotations are not synced between devices by Quotation Manager.</p>
+    </section>
+
+    <section>
+      <h2>5. Tracking, Analytics, and Advertising</h2>
+      <p>Quotation Manager does not show advertising, does not track you across other companies' apps or websites, and does not currently use any analytics or telemetry SDK. The app does not sell your personal data.</p>
+    </section>
+
+    <section>
+      <h2>6. Backups</h2>
+      <p>Because your business data is stored locally by the app, it may be included in backups you make of your device — for example, an iCloud device backup or a local computer backup — depending on your own iOS/iPadOS and Apple ID settings. This backup behavior is controlled by Apple and your device configuration, not by any developer-operated cloud synchronization service. Quotation Manager itself does not sync your business data between devices.</p>
+    </section>
+
+    <section>
+      <h2>7. Data Retention and Deletion</h2>
+      <p>Your business data remains stored locally until you delete it yourself within the app, remove it through app functionality, or erase your device or its storage. Uninstalling the app may remove its locally stored data from your device, subject to Apple's own backup and restore behavior.</p>
+    </section>
+
+    <section>
+      <h2>8. Children's Privacy</h2>
+      <p>Quotation Manager is a general-purpose business tool intended for business owners and professionals, and it is not directed to children. We do not knowingly collect information from children, and the app is not intended for use by children.</p>
+    </section>
+
+    <section>
+      <h2>9. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy as the app evolves. Material changes will be reflected by an updated effective date above, and continued use of the app after an update constitutes acceptance of the revised policy. Within the app, an updated legal document may require your acceptance again before continued use.</p>
+    </section>
+
+    <section>
+      <h2>10. Contact</h2>
+      <p>You can reach the developer using the contact details provided on Quotation Manager's official App Store listing.</p>
+    </section>
+  </div>
+
+  <div class="lang" id="ar">
+    <h1>سياسة الخصوصية</h1>
+    <p class="subtitle">Quotation Manager · تاريخ السريان: 7 أغسطس 2026</p>
+
+    <section>
+      <h2>1. المعلومات التي يخزنها التطبيق</h2>
+      <p>يخزن Quotation Manager معلومات العمل التي تدخلها مباشرة في التطبيق، بما في ذلك بيانات الشركات التي تنشئها (الاسم، معلومات الاتصال، العناوين، الشعار، إعدادات الضرائب)، وبيانات العملاء (الأسماء، جهات الاتصال، العناوين)، وجهات الاتصال والعناوين المرتبطة بشركاتك وعملائك، ومعلومات عروض الأسعار (البنود والأسعار والكميات والضرائب والخصومات والملاحظات)، وبيانات الكتالوج وقوائم الأسعار التي تُعدّها، وتفضيلات التطبيق وإعداداته.</p>
+    </section>
+
+    <section>
+      <h2>2. التخزين المحلي</h2>
+      <p>يتم تخزين جميع هذه المعلومات محليًا على جهازك بواسطة التطبيق. لا يرسل Quotation Manager هذه المعلومات إلى أي خوادم يديرها المطوّر ولا يخزنها عليها. لا يملك المطوّر أي قدرة على الاطلاع على بيانات عملك أو الوصول إليها أو استرجاعها.</p>
+    </section>
+
+    <section>
+      <h2>3. إنشاء ملفات PDF ومشاركتها</h2>
+      <p>ينشئ Quotation Manager مستندات عروض الأسعار بصيغة PDF محليًا على جهازك. لا تتم مشاركة أو تصدير ملف PDF إلا عند اختيارك ذلك باستخدام واجهة المشاركة القياسية في iOS. وبمجرد مشاركة ملف PDF مع تطبيق أو خدمة أو جهة اتصال أخرى، تتولى تلك الجهة معالجة الملف وفق ممارسات الخصوصية الخاصة بها، وهو أمر لا تغطيه هذه السياسة.</p>
+    </section>
+
+    <section>
+      <h2>4. المشتريات والاشتراكات</h2>
+      <p>يُطرح Quotation Manager Pro كاشتراك يتجدد تلقائيًا، ويتم شراؤه وإدارته بالكامل عبر App Store باستخدام StoreKit. تتولى Apple معالجة عمليات الشراء؛ ولا يتلقى المطوّر بيانات البطاقة بالكامل. قد تعالج Apple معلومات الشراء والحساب والاشتراك وفق سياسة الخصوصية الخاصة بها. ويتلقى التطبيق فقط معلومات حالة الاشتراك والأهلية اللازمة لإتاحة ميزات Pro.</p>
+      <p>ولأن الاشتراكات تديرها Apple، يمكن استعادة أهلية Quotation Manager Pro على جهاز آخر مسجّل بنفس معرف Apple باستخدام خيار استعادة المشتريات داخل التطبيق. هذا الاسترداد منفصل عن بيانات عملك؛ ولا تتم مزامنة شركاتك أو عملائك أو عروض الأسعار بين الأجهزة بواسطة Quotation Manager.</p>
+    </section>
+
+    <section>
+      <h2>5. التتبع والتحليلات والإعلانات</h2>
+      <p>لا يعرض Quotation Manager إعلانات، ولا يتتبعك عبر تطبيقات أو مواقع شركات أخرى، ولا يستخدم حاليًا أي أداة تحليلات أو تتبع تقني. لا يبيع التطبيق بياناتك الشخصية.</p>
+    </section>
+
+    <section>
+      <h2>6. النسخ الاحتياطي</h2>
+      <p>نظرًا لأن بيانات عملك تُخزّن محليًا بواسطة التطبيق، فقد تكون مشمولة ضمن النسخ الاحتياطية التي تنشئها لجهازك — مثل النسخة الاحتياطية على iCloud أو نسخة احتياطية على حاسوب — تبعًا لإعدادات iOS/iPadOS ومعرّف Apple الخاص بك. يخضع سلوك النسخ الاحتياطي هذا لتحكم Apple وإعدادات جهازك، وليس لأي خدمة مزامنة سحابية يديرها المطوّر. ولا يقوم Quotation Manager نفسه بمزامنة بيانات عملك بين الأجهزة.</p>
+    </section>
+
+    <section>
+      <h2>7. الاحتفاظ بالبيانات وحذفها</h2>
+      <p>تظل بيانات عملك مخزّنة محليًا إلى أن تحذفها بنفسك داخل التطبيق، أو تزيلها عبر وظائف التطبيق، أو تقوم بمسح جهازك أو وحدة تخزينه. قد يؤدي إلغاء تثبيت التطبيق إلى إزالة بياناته المخزنة محليًا من جهازك، وفق سلوك النسخ الاحتياطي والاستعادة الخاص بـ Apple.</p>
+    </section>
+
+    <section>
+      <h2>8. خصوصية الأطفال</h2>
+      <p>Quotation Manager أداة عمل عامة موجّهة لأصحاب الأعمال والمهنيين، وهو غير موجّه للأطفال. نحن لا نجمع عن قصد معلومات من الأطفال، والتطبيق غير مخصص لاستخدام الأطفال.</p>
+    </section>
+
+    <section>
+      <h2>9. التغييرات على هذه السياسة</h2>
+      <p>قد نقوم بتحديث سياسة الخصوصية هذه مع تطور التطبيق. سيتم توضيح التغييرات الجوهرية بتحديث تاريخ السريان أعلاه، ويُعد استمرار استخدامك للتطبيق بعد التحديث موافقة على السياسة المُحدّثة. وقد يتطلب أي مستند قانوني مُحدّث داخل التطبيق موافقتك عليه مرة أخرى قبل الاستمرار في الاستخدام.</p>
+    </section>
+
+    <section>
+      <h2>10. التواصل</h2>
+      <p>يمكنك التواصل مع المطوّر عبر بيانات الاتصال المتوفرة في صفحة Quotation Manager الرسمية على App Store.</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>This page contains no analytics, cookies, or third-party trackers.</p>
+  </footer>
 </main>
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    const selected = lang === 'ar' ? 'ar' : 'en';
+    const root = document.documentElement;
+    const active = document.getElementById(selected);
+    const inactive = document.getElementById(selected === 'ar' ? 'en' : 'ar');
+    if (active) {
+      active.classList.add('active');
+    }
+    if (inactive) {
+      inactive.classList.remove('active');
+    }
+    root.setAttribute('lang', selected);
+    root.setAttribute('dir', selected === 'ar' ? 'rtl' : 'ltr');
+    document.body.setAttribute('dir', selected === 'ar' ? 'rtl' : 'ltr');
+  })();
+</script>
 </body>
 </html>

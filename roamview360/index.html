@@ -77,37 +77,56 @@ a{color:inherit}
 .sub{margin:0 0 17px;color:var(--muted);line-height:1.55}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .card{
+  --brand:#2ee7ef;
   position:relative;overflow:hidden;padding:21px;border:1px solid var(--line);border-radius:26px;
-  background:linear-gradient(150deg,rgba(15,37,51,.98),rgba(7,23,33,.98));
+  background:linear-gradient(150deg,rgba(15,37,51,.985),rgba(7,23,33,.985));
   box-shadow:0 15px 38px rgba(0,0,0,.2)
 }
-.card:before{
-  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
-  right:-80px;top:-80px;opacity:.19;filter:blur(8px)
+.card:after{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--brand)
 }
-.youtube:before{background:#ff4141}
-.instagram:before{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
-.facebook:before{background:#1877f2}
-.tiktok:before{background:linear-gradient(135deg,#25f4ee,#fe2c55)}
+.card:before{
+  content:"";position:absolute;width:170px;height:170px;border-radius:50%;
+  right:-85px;top:-85px;opacity:.08;filter:blur(4px);background:var(--brand)
+}
+.youtube{--brand:#FF0000}
+.facebook{--brand:#1877F2}
+.instagram{--brand:#E1306C}
+.tiktok{--brand:#25F4EE}
+.instagram:after{background:linear-gradient(90deg,#833AB4,#E1306C,#FD1D1D,#FCAF45)}
+.tiktok:after{background:linear-gradient(90deg,#25F4EE 0 45%,#FE2C55 55% 100%)}
 .card-top{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-bottom:15px}
 .icon{
   width:50px;height:50px;border-radius:15px;display:grid;place-items:center;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
-  font-size:1.1rem;font-weight:900
+  background:var(--brand);border:0;color:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.2)
+}
+.icon svg{width:27px;height:27px;display:block;fill:#fff}
+.instagram .icon{background:linear-gradient(135deg,#833AB4 0%,#E1306C 42%,#FD1D1D 70%,#FCAF45 100%)}
+.tiktok .icon{
+  background:#050505;border:1px solid rgba(37,244,238,.65);
+  box-shadow:-3px 2px 0 rgba(37,244,238,.55),3px -2px 0 rgba(254,44,85,.42)
 }
 .card-top h3{margin:0;font-size:1.38rem}
 .handle{margin-top:2px;color:var(--muted);font-size:.88rem}
 .card-body{position:relative;z-index:1;display:grid;grid-template-columns:1fr 148px;gap:17px;align-items:start}
 .copy p{margin:0 0 12px;color:#bed0d8;line-height:1.58;font-size:.91rem}
 .url{
-  display:block;color:var(--cyan);word-break:break-all;text-decoration:none;
-  font-size:.82rem;margin-bottom:12px
+  display:block;color:var(--brand);word-break:break-all;text-decoration:none;
+  font-size:.82rem;margin-bottom:12px;font-weight:700
 }
+.instagram .url{color:#ff6b9b}
+.facebook .url{color:#6fa8ff}
+.tiktok .url{color:#5ef5ef}
 .url:hover{text-decoration:underline}
 .open{
-  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 14px;
-  border-radius:12px;background:#f7fcfd;color:#06131b;text-decoration:none;font-weight:800
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 15px;
+  border-radius:12px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;
+  box-shadow:0 8px 20px rgba(0,0,0,.16)
 }
+.instagram .open{background:linear-gradient(135deg,#833AB4,#E1306C,#FD1D1D,#FCAF45)}
+.tiktok .open{background:#050505;border:1px solid #25F4EE;color:#fff}
+.open:hover{filter:brightness(1.08)}
 .qr{
   display:block;background:#fff;border-radius:19px;padding:9px;text-decoration:none;
   box-shadow:0 12px 30px rgba(0,0,0,.28);transition:.18s ease
@@ -161,7 +180,7 @@ footer{text-align:center;color:#718d9b;font-size:.8rem;padding:25px 0 2px}
 
     <div class="grid">
       <article class="card youtube">
-        <div class="card-top"><div class="icon">▶</div><div><h3>YouTube</h3><div class="handle">@RoamView360Travel</div></div></div>
+        <div class="card-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></div><div><h3>YouTube</h3><div class="handle">@RoamView360Travel</div></div></div>
         <div class="card-body">
           <div class="copy">
             <p>Interactive 360° travel videos, scenic Shorts and destination views.</p>
@@ -176,7 +195,7 @@ footer{text-align:center;color:#718d9b;font-size:.8rem;padding:25px 0 2px}
       </article>
 
       <article class="card instagram">
-        <div class="card-top"><div class="icon">◎</div><div><h3>Instagram</h3><div class="handle">@roamview360</div></div></div>
+        <div class="card-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.7 2h8.6A5.7 5.7 0 0 1 22 7.7v8.6a5.7 5.7 0 0 1-5.7 5.7H7.7A5.7 5.7 0 0 1 2 16.3V7.7A5.7 5.7 0 0 1 7.7 2zm-.2 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></div><div><h3>Instagram</h3><div class="handle">@roamview360</div></div></div>
         <div class="card-body">
           <div class="copy">
             <p>Reels, scenic photos and short travel moments from real trips.</p>
@@ -191,7 +210,7 @@ footer{text-align:center;color:#718d9b;font-size:.8rem;padding:25px 0 2px}
       </article>
 
       <article class="card facebook">
-        <div class="card-top"><div class="icon">f</div><div><h3>Facebook</h3><div class="handle">RoamView 360</div></div></div>
+        <div class="card-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.8 1.8-1.8H17V2.4c-.3 0-1.3-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.6v2.6H7V13h3v9h3.5z"/></svg></div><div><h3>Facebook</h3><div class="handle">RoamView 360</div></div></div>
         <div class="card-body">
           <div class="copy">
             <p>Travel videos, scenic posts and shareable 360° experiences.</p>
@@ -206,7 +225,7 @@ footer{text-align:center;color:#718d9b;font-size:.8rem;padding:25px 0 2px}
       </article>
 
       <article class="card tiktok">
-        <div class="card-top"><div class="icon">♪</div><div><h3>TikTok</h3><div class="handle">@roamview360travel</div></div></div>
+        <div class="card-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.7 2c.2 1.8 1.2 3.3 2.8 4.3a7 7 0 0 0 2.5 1v3.5a10 10 0 0 1-5.3-1.8v7.1a5.9 5.9 0 1 1-5.9-5.9c.4 0 .8 0 1.2.1v3.6a2.7 2.7 0 0 0-1.2-.3 2.5 2.5 0 1 0 2.5 2.5V2h3.4z"/></svg></div><div><h3>TikTok</h3><div class="handle">@roamview360travel</div></div></div>
         <div class="card-body">
           <div class="copy">
             <p>Fast vertical travel stories, destination highlights and scenic reveals.</p>

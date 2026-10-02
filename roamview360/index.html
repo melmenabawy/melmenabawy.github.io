@@ -3,174 +3,227 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#061827">
+<meta name="theme-color" content="#07131d">
 <title>RoamView 360 | Follow the Journey</title>
-<meta name="description" content="RoamView 360 social links and QR codes. Real places, real experiences, a wider view.">
+<meta name="description" content="Official RoamView 360 links — real travel footage, immersive 360° views, Reels, Shorts and travel stories.">
 <style>
 :root{
-  --navy:#061827;--navy2:#0a2335;--card:#0b1f2e;--cyan:#00e8ef;
-  --blue:#009be7;--silver:#e9edf0;--text:#f7fbfd;--muted:#9db7c6;--line:#183e51;
+  --bg:#06131d;--bg2:#0b2230;--card:#0b1d29;--card2:#102a39;
+  --text:#f7fbfd;--muted:#9eb7c4;--line:#1b4153;--cyan:#2ee7ef;--blue:#2f8cff;
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  margin:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  margin:0;min-height:100vh;color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   background:
-    radial-gradient(circle at 14% 0%,rgba(0,232,239,.14),transparent 26%),
-    radial-gradient(circle at 90% 8%,rgba(0,155,231,.12),transparent 26%),
-    linear-gradient(180deg,#04121d 0%,var(--navy) 42%,#07131c 100%);
+    radial-gradient(circle at 12% -2%,rgba(46,231,239,.15),transparent 25%),
+    radial-gradient(circle at 90% 2%,rgba(47,140,255,.12),transparent 28%),
+    linear-gradient(180deg,#041019 0%,#081823 42%,#07131c 100%);
 }
-.wrap{max-width:1050px;margin:auto;padding:18px 14px 46px}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 15px 46px}
 .hero{
-  overflow:hidden;border:1px solid var(--line);border-radius:28px;
-  background:#061522;box-shadow:0 24px 60px rgba(0,0,0,.28)
+  position:relative;overflow:hidden;border:1px solid var(--line);border-radius:32px;
+  padding:42px 34px 38px;min-height:430px;
+  background:
+    radial-gradient(circle at 82% 22%,rgba(46,231,239,.22),transparent 23%),
+    radial-gradient(circle at 78% 35%,rgba(47,140,255,.11),transparent 29%),
+    linear-gradient(145deg,#0d2a39 0%,#071823 63%,#06121b 100%);
+  box-shadow:0 24px 60px rgba(0,0,0,.28)
 }
-.hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.hero-copy{padding:20px 22px 22px;background:linear-gradient(180deg,#0a1f2d,#081824)}
-.hero-copy h1{margin:0 0 8px;font-size:clamp(1.55rem,4vw,2.35rem);letter-spacing:-.03em}
-.hero-copy p{margin:0;color:#bfd2dc;line-height:1.65}
-.hero-copy .ar{margin-top:7px;direction:rtl;text-align:right;color:#91c5d1}
-.brandline{
-  display:flex;flex-wrap:wrap;gap:8px;margin-top:16px
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none
 }
-.brandline span{
-  padding:7px 11px;border-radius:999px;border:1px solid rgba(0,232,239,.22);
-  background:rgba(0,232,239,.07);color:#dffeff;font-size:.76rem;font-weight:800
+.hero:before{
+  width:430px;height:430px;right:-130px;top:-115px;
+  border:1px solid rgba(46,231,239,.22);
+  box-shadow:0 0 0 55px rgba(46,231,239,.03),0 0 0 112px rgba(47,140,255,.02)
 }
-.section{margin-top:24px}
+.hero:after{
+  width:170px;height:170px;right:125px;top:92px;
+  background:radial-gradient(circle,rgba(46,231,239,.28),rgba(46,231,239,.03) 55%,transparent 70%)
+}
+.brand{position:relative;z-index:1;display:flex;align-items:center;gap:16px;max-width:720px}
+.mark{
+  width:82px;height:82px;border:3px solid var(--cyan);border-radius:50%;
+  position:relative;flex:0 0 auto;box-shadow:0 0 30px rgba(46,231,239,.22)
+}
+.mark:before{
+  content:"";position:absolute;width:20px;height:20px;border-radius:50%;
+  border:7px solid var(--cyan);left:23px;top:18px
+}
+.mark:after{
+  content:"";position:absolute;width:3px;height:30px;background:var(--cyan);
+  left:38px;top:45px;transform:rotate(45deg);border-radius:10px
+}
+.wordmark{line-height:.9;letter-spacing:-.06em}
+.wordmark b{font-size:clamp(2.4rem,8vw,5.2rem);font-weight:900}
+.wordmark b span{color:var(--cyan)}
+.wordmark small{
+  display:block;margin-top:12px;font-size:clamp(.8rem,2vw,1.1rem);
+  letter-spacing:.22em;color:#c4d9e4;font-weight:800
+}
+.hero h1{position:relative;z-index:1;margin:30px 0 8px;font-size:clamp(1.6rem,4vw,2.55rem);letter-spacing:-.04em}
+.hero p{position:relative;z-index:1;margin:0;max-width:760px;color:#c3d5de;line-height:1.72}
+.hero .ar{margin-top:8px;direction:rtl;text-align:left;color:#95cbd4}
+.chips{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{
+  padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);font-size:.78rem;font-weight:700
+}
+.section{margin-top:26px}
 .section h2{margin:0 0 5px;font-size:1.9rem;letter-spacing:-.03em}
-.sub{margin:0 0 16px;color:var(--muted);line-height:1.55}
+.sub{margin:0 0 17px;color:var(--muted);line-height:1.55}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .card{
-  position:relative;overflow:hidden;background:linear-gradient(150deg,#0d2637,#081b28);
-  border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 14px 36px rgba(0,0,0,.2)
+  position:relative;overflow:hidden;padding:21px;border:1px solid var(--line);border-radius:26px;
+  background:linear-gradient(150deg,rgba(15,37,51,.98),rgba(7,23,33,.98));
+  box-shadow:0 15px 38px rgba(0,0,0,.2)
 }
-.card:after{
-  content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,232,239,.15),transparent 70%)
+.card:before{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
+  right:-80px;top:-80px;opacity:.19;filter:blur(8px)
 }
-.top{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.ico{
-  width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
-  background:linear-gradient(145deg,rgba(0,232,239,.16),rgba(0,155,231,.12));
-  border:1px solid rgba(0,232,239,.18);font-weight:900;font-size:1.1rem
+.youtube:before{background:#ff4141}
+.instagram:before{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+.facebook:before{background:#1877f2}
+.tiktok:before{background:linear-gradient(135deg,#25f4ee,#fe2c55)}
+.card-top{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.icon{
+  width:50px;height:50px;border-radius:15px;display:grid;place-items:center;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  font-size:1.1rem;font-weight:900
 }
-.top h3{margin:0;font-size:1.32rem}.handle{margin-top:2px;color:var(--muted);font-size:.88rem}
-.body{position:relative;z-index:1;display:grid;grid-template-columns:1fr 150px;gap:16px;align-items:start}
-.copy p{margin:0 0 12px;color:#bed0d9;line-height:1.58;font-size:.91rem}
-.url{display:block;color:var(--cyan);word-break:break-all;text-decoration:none;font-size:.82rem;margin-bottom:11px}
+.card-top h3{margin:0;font-size:1.38rem}
+.handle{margin-top:2px;color:var(--muted);font-size:.88rem}
+.card-body{position:relative;z-index:1;display:grid;grid-template-columns:1fr 148px;gap:17px;align-items:start}
+.copy p{margin:0 0 12px;color:#bed0d8;line-height:1.58;font-size:.91rem}
+.url{
+  display:block;color:var(--cyan);word-break:break-all;text-decoration:none;
+  font-size:.82rem;margin-bottom:12px
+}
+.url:hover{text-decoration:underline}
 .open{
   display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 14px;
-  border-radius:12px;background:linear-gradient(135deg,var(--cyan),#78cfff);color:#04121d;
-  text-decoration:none;font-weight:900
+  border-radius:12px;background:#f7fcfd;color:#06131b;text-decoration:none;font-weight:800
 }
 .qr{
-  display:block;background:#fff;border-radius:18px;padding:9px;text-decoration:none;
-  box-shadow:0 12px 28px rgba(0,0,0,.26)
+  display:block;background:#fff;border-radius:19px;padding:9px;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.28);transition:.18s ease
 }
-.qr img{display:block;width:100%;height:auto;border-radius:7px}
-.qr small{display:block;text-align:center;color:#55717f;font-size:.65rem;font-weight:900;margin-top:7px;letter-spacing:.05em}
-.note{
-  margin-top:18px;padding:15px 16px;border:1px solid var(--line);border-radius:18px;
-  background:rgba(255,255,255,.025);color:#9fb7c3;text-align:center
+.qr:hover{transform:translateY(-2px)}
+.qr img{display:block;width:100%;height:auto;border-radius:8px}
+.qr small{display:block;text-align:center;color:#58727f;font-size:.66rem;font-weight:900;margin-top:7px;letter-spacing:.05em}
+.about{
+  margin-top:19px;padding:20px;border-radius:23px;border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(13,34,47,.78),rgba(8,23,33,.76));
+  color:#a8bec9;line-height:1.65
 }
-footer{text-align:center;color:#718d9b;font-size:.8rem;padding:24px 0 2px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}.body{grid-template-columns:1fr 126px}}
-@media(max-width:470px){.body{grid-template-columns:1fr}.qr{max-width:190px;margin:auto}.hero{border-radius:22px}}
-
-/* Brand hero fix: use the uploaded RoamView 360 logo at a stable mobile-friendly size */
-.hero{
-  padding:30px 24px 24px;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(0,232,239,.14),transparent 40%),
-    linear-gradient(145deg,#071b29,#061522 72%);
+.about strong{color:#fff}
+footer{text-align:center;color:#718d9b;font-size:.8rem;padding:25px 0 2px}
+@media(max-width:760px){
+  .grid{grid-template-columns:1fr}
+  .hero{padding:29px 19px;min-height:auto;border-radius:26px}
+  .mark{width:68px;height:68px}
+  .mark:before{left:18px;top:14px}
+  .mark:after{left:31px;top:38px}
+  .card-body{grid-template-columns:1fr 126px}
 }
-.hero .brand-logo{max-width:720px;margin:0 auto 14px}
-.hero .brand-logo img{
-  display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
-  filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))
-}
-.hero-copy{padding:0;background:none;text-align:center}
-.hero-copy .ar{text-align:center}
-.brandline{justify-content:center}
 @media(max-width:470px){
-  .hero{padding:22px 14px 18px}
-  .hero .brand-logo{margin-bottom:10px}
-  .hero-copy h1{font-size:1.6rem}
+  .card-body{grid-template-columns:1fr}
+  .qr{max-width:190px;margin:4px auto 0}
+  .wordmark small{letter-spacing:.13em}
 }
-
 </style>
 </head>
 <body>
 <main class="wrap">
-
-<section class="hero">
-  <div class="brand-logo">
-    <img src="data:image/webp;base64,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" alt="RoamView 360 logo">
-  </div>
-  <div class="hero-copy">
-    <h1>Follow the Journey</h1>
-    <p>Real travel footage, scenic short videos and immersive 360° experiences.</p>
-    <p class="ar" lang="ar">لقطات سفر حقيقية، ومقاطع قصيرة، وتجارب غامرة بزاوية 360°.</p>
-    <div class="brandline">
-      <span>REAL PLACES</span><span>REAL EXPERIENCES</span><span>A WIDER VIEW</span>
+  <section class="hero">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <div class="wordmark">
+        <b>Roam<span>View</span> 360</b>
+        <small>REAL PLACES · REAL EXPERIENCES · A WIDER VIEW</small>
+      </div>
     </div>
-  </div>
-</section>
+    <h1>Follow the journey</h1>
+    <p>Real travel footage, scenic short videos and immersive 360° experiences across YouTube, Instagram, Facebook and TikTok.</p>
+    <p class="ar">لقطات سفر حقيقية، ومقاطع قصيرة، وتجارب 360° غامرة عبر يوتيوب وإنستغرام وفيسبوك وتيك توك.</p>
+    <div class="chips">
+      <span>Destinations</span><span>Hotels</span><span>360°</span><span>Transport</span><span>Travel Tips</span>
+    </div>
+  </section>
 
-<section class="section">
-  <h2>Choose your platform</h2>
-  <p class="sub">Scan a QR code or tap the QR, URL, or button to open the page directly.</p>
+  <section class="section">
+    <h2>Choose your platform</h2>
+    <p class="sub">Scan the QR code, tap the QR itself, or tap the URL/button to open the social page directly.</p>
 
-  <div class="grid">
-    <article class="card">
-      <div class="top"><div class="ico">▶</div><div><h3>YouTube</h3><div class="handle">@RoamView360Travel</div></div></div>
-      <div class="body"><div class="copy">
-        <p>Interactive 360° travel videos, scenic Shorts and destination views.</p>
-        <a class="url" href="https://www.youtube.com/@RoamView360Travel" target="_blank" rel="noopener">youtube.com/@RoamView360Travel</a>
-        <a class="open" href="https://www.youtube.com/@RoamView360Travel" target="_blank" rel="noopener">Open YouTube ↗</a>
-      </div><a class="qr" href="https://www.youtube.com/@RoamView360Travel" target="_blank" rel="noopener">
-        <img alt="YouTube QR code" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.youtube.com%2F%40RoamView360Travel"><small>SCAN TO OPEN</small>
-      </a></div>
-    </article>
+    <div class="grid">
+      <article class="card youtube">
+        <div class="card-top"><div class="icon">▶</div><div><h3>YouTube</h3><div class="handle">@RoamView360Travel</div></div></div>
+        <div class="card-body">
+          <div class="copy">
+            <p>Interactive 360° travel videos, scenic Shorts and destination views.</p>
+            <a class="url" href="https://www.youtube.com/@RoamView360Travel" target="_blank" rel="noopener">youtube.com/@RoamView360Travel</a>
+            <a class="open" href="https://www.youtube.com/@RoamView360Travel" target="_blank" rel="noopener">Open YouTube ↗</a>
+          </div>
+          <a class="qr" href="https://www.youtube.com/@RoamView360Travel" target="_blank" rel="noopener" aria-label="Open YouTube">
+            <img alt="QR code for RoamView 360 YouTube" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.youtube.com%2F%40RoamView360Travel">
+            <small>SCAN TO OPEN</small>
+          </a>
+        </div>
+      </article>
 
-    <article class="card">
-      <div class="top"><div class="ico">◎</div><div><h3>Instagram</h3><div class="handle">@roamview360</div></div></div>
-      <div class="body"><div class="copy">
-        <p>Reels, scenic photos and short travel moments from real trips.</p>
-        <a class="url" href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener">instagram.com/roamview360</a>
-        <a class="open" href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener">Open Instagram ↗</a>
-      </div><a class="qr" href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener">
-        <img alt="Instagram QR code" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.instagram.com%2Froamview360%2F"><small>SCAN TO OPEN</small>
-      </a></div>
-    </article>
+      <article class="card instagram">
+        <div class="card-top"><div class="icon">◎</div><div><h3>Instagram</h3><div class="handle">@roamview360</div></div></div>
+        <div class="card-body">
+          <div class="copy">
+            <p>Reels, scenic photos and short travel moments from real trips.</p>
+            <a class="url" href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener">instagram.com/roamview360</a>
+            <a class="open" href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener">Open Instagram ↗</a>
+          </div>
+          <a class="qr" href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener" aria-label="Open Instagram">
+            <img alt="QR code for RoamView 360 Instagram" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.instagram.com%2Froamview360%2F">
+            <small>SCAN TO OPEN</small>
+          </a>
+        </div>
+      </article>
 
-    <article class="card">
-      <div class="top"><div class="ico">f</div><div><h3>Facebook</h3><div class="handle">RoamView 360</div></div></div>
-      <div class="body"><div class="copy">
-        <p>Travel videos, scenic posts and shareable 360° experiences.</p>
-        <a class="url" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener">facebook.com/roamview360</a>
-        <a class="open" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener">Open Facebook ↗</a>
-      </div><a class="qr" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener">
-        <img alt="Facebook QR code" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.facebook.com%2Froamview360"><small>SCAN TO OPEN</small>
-      </a></div>
-    </article>
+      <article class="card facebook">
+        <div class="card-top"><div class="icon">f</div><div><h3>Facebook</h3><div class="handle">RoamView 360</div></div></div>
+        <div class="card-body">
+          <div class="copy">
+            <p>Travel videos, scenic posts and shareable 360° experiences.</p>
+            <a class="url" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener">facebook.com/roamview360</a>
+            <a class="open" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener">Open Facebook ↗</a>
+          </div>
+          <a class="qr" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener" aria-label="Open Facebook">
+            <img alt="QR code for RoamView 360 Facebook" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.facebook.com%2Froamview360">
+            <small>SCAN TO OPEN</small>
+          </a>
+        </div>
+      </article>
 
-    <article class="card">
-      <div class="top"><div class="ico">♪</div><div><h3>TikTok</h3><div class="handle">@roamview360travel</div></div></div>
-      <div class="body"><div class="copy">
-        <p>Fast vertical travel stories, destination highlights and scenic reveals.</p>
-        <a class="url" href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener">tiktok.com/@roamview360travel</a>
-        <a class="open" href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener">Open TikTok ↗</a>
-      </div><a class="qr" href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener">
-        <img alt="TikTok QR code" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.tiktok.com%2F%40roamview360travel"><small>SCAN TO OPEN</small>
-      </a></div>
-    </article>
-  </div>
+      <article class="card tiktok">
+        <div class="card-top"><div class="icon">♪</div><div><h3>TikTok</h3><div class="handle">@roamview360travel</div></div></div>
+        <div class="card-body">
+          <div class="copy">
+            <p>Fast vertical travel stories, destination highlights and scenic reveals.</p>
+            <a class="url" href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener">tiktok.com/@roamview360travel</a>
+            <a class="open" href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener">Open TikTok ↗</a>
+          </div>
+          <a class="qr" href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener" aria-label="Open TikTok">
+            <img alt="QR code for RoamView 360 TikTok" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fwww.tiktok.com%2F%40roamview360travel">
+            <small>SCAN TO OPEN</small>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-  <div class="note">The QR codes are clickable too. The page now follows the uploaded RoamView 360 visual identity.</div>
-</section>
-
-<footer>© RoamView 360 · روم فيو 360</footer>
+  <div class="about"><strong>RoamView 360</strong> is built around real travel footage and faceless storytelling. Each QR code and visible URL opens the matching social profile.</div>
+  <footer>© RoamView 360 · روم فيو 360</footer>
 </main>
 </body>
 </html>

@@ -1268,8 +1268,8 @@
       yt360LastY = event.clientY;
 
       const sensitivity = yt360View.fov / 550;
-      yt360View.yaw -= dx * sensitivity;
-      yt360View.pitch -= dy * sensitivity;
+      yt360View.yaw += dx * sensitivity;
+      yt360View.pitch += dy * sensitivity;
       apply360View();
       event.preventDefault();
     });

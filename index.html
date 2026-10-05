@@ -19,19 +19,33 @@
   <meta name="twitter:title" content="RoamView 360 | Real places. Real experiences." />
   <meta name="twitter:description" content="Real travel footage, scenic short videos and immersive 360° experiences." />
   <meta name="twitter:image" content="https://roamview360.com/roamview360/og-preview-v5.jpg" />
+  <meta name="theme-color" content="#061827" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&family=Unbounded:wght@500;600&display=swap" />
 
   <style>
+    /* Layout: a dark panorama page. One framed "viewport" motif (hero banner, 360° stage) on a navy ground,
+       content in a 1180px column that stacks to a single column on phones. */
     :root {
+      --ink: #030f19;
       --navy: #061827;
-      --deep-blue: #0b3049;
+      --deep: #0a2638;
       --cyan: #00d9ff;
-      --cyan-dark: #009ab8;
-      --white: #ffffff;
-      --muted: #b7ccd8;
-      --card: rgba(255,255,255,0.09);
-      --border: rgba(255,255,255,0.16);
+      --sky: #4aa8ff;
       --sunset: #ffb454;
-      --radius: 22px;
+      --text: #f3f9fc;
+      --soft: #d6e6ee;
+      --muted: #a8c1cf;
+      --card: rgba(255,255,255,0.045);
+      --line: rgba(154,226,241,0.16);
+      --line-strong: rgba(154,226,241,0.36);
+      --display: "Unbounded", "Arial Black", Arial, sans-serif;
+      --body: "Figtree", Arial, Helvetica, sans-serif;
+      --radius: 20px;
+      --gutter: 20px;
+      --header-h: 68px;
+      color-scheme: dark;
     }
 
     * {
@@ -40,14 +54,19 @@
       padding: 0;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: var(--body);
       background: var(--navy);
-      color: var(--white);
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -58,6 +77,7 @@
 
     img {
       max-width: 100%;
+      height: auto;
       display: block;
     }
 
@@ -68,155 +88,172 @@
 
     :focus-visible {
       outline: 3px solid var(--sunset);
-      outline-offset: 4px;
+      outline-offset: 3px;
+    }
+
+    section[id],
+    article[id] {
+      scroll-margin-top: calc(var(--header-h) + 20px);
     }
 
     .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
+      width: min(1180px, calc(100% - (var(--gutter) * 2)));
+      margin-inline: auto;
     }
 
+    h1,
+    h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+    }
+
+    /* Header */
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(6, 24, 39, 0.88);
+      padding-top: env(safe-area-inset-top, 0px);
+      background: rgba(6, 24, 39, 0.84);
+      -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      min-height: 76px;
+      min-height: var(--header-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+      gap: 10px;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
     }
 
     .brand img {
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       object-fit: cover;
       border-radius: 50%;
-      border: 2px solid var(--cyan);
+      border: 1.5px solid var(--cyan);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
-      font-size: 0.94rem;
+      gap: 4px;
+      font-size: 0.92rem;
+      font-weight: 500;
     }
 
     .nav-links a {
       color: var(--muted);
-      transition: color 0.2s ease;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--white);
+      color: var(--text);
+      background: rgba(255,255,255,0.07);
     }
 
-    .nav-cta {
-      padding: 11px 17px;
-      border-radius: 999px;
+    .nav-links .nav-cta {
+      margin-left: 6px;
+      padding: 9px 16px;
       background: var(--cyan);
-      color: var(--navy) !important;
-      font-weight: 800;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: #74eaff;
+      color: var(--navy);
     }
 
     .menu-toggle {
       display: none;
-      border: 1px solid var(--border);
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid var(--line-strong);
       background: transparent;
-      color: var(--white);
-      padding: 9px 12px;
-      border-radius: 10px;
+      color: var(--text);
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 1.3rem;
     }
 
+    .menu-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Hero */
     .hero {
-      min-height: 610px;
-      padding: 122px 0 70px;
-      display: flex;
-      align-items: center;
       position: relative;
-      isolation: isolate;
+      padding: calc(var(--header-h) + 56px) 0 0;
+      overflow: hidden;
+      overflow: clip;
       background:
-        linear-gradient(90deg, rgba(6,24,39,0.96) 0%, rgba(6,24,39,0.82) 34%, rgba(6,24,39,0.42) 70%, rgba(6,24,39,0.22) 100%),
-        url("roamview360/og-preview-v5.jpg") center/cover no-repeat;
+        radial-gradient(60% 70% at 88% 8%, rgba(74,168,255,0.24), transparent 70%),
+        radial-gradient(42% 55% at 0% 0%, rgba(255,180,84,0.15), transparent 70%),
+        var(--navy);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 180px;
-      background: linear-gradient(transparent, var(--navy));
-      z-index: -1;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 52px;
+      align-items: center;
+      padding-bottom: 60px;
     }
 
-    .hero-content {
-      max-width: 610px;
-    }
-
-    .eyebrow {
-      color: var(--cyan);
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      margin-bottom: 18px;
-    }
-
-    .hero-logo {
-      width: 112px;
-      height: 112px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #9aeaf1;
-      margin-bottom: 20px;
-      box-shadow: 0 0 22px rgba(0,217,255,0.20);
+    .hero-copy {
+      min-width: 0;
     }
 
     h1 {
-      max-width: 570px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.6rem, 4.2vw, 3.625rem);
-      font-weight: 600;
-      line-height: 1.13;
-      letter-spacing: -0.025em;
+      font-size: clamp(1.8rem, 3.5vw, 3.05rem);
+      line-height: 1.15;
       margin-bottom: 18px;
     }
 
-    h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 600;
+    h1 span {
+      color: var(--cyan);
     }
 
-    .hero p {
-      max-width: 585px;
-      color: #ffffff;
-      font-size: 1rem;
-      line-height: 1.45;
+    .hero-copy p {
+      max-width: 52ch;
+      color: var(--soft);
+      font-size: 1.06rem;
+      line-height: 1.55;
       margin-bottom: 28px;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
     }
 
     .button {
@@ -224,10 +261,11 @@
       align-items: center;
       justify-content: center;
       min-height: 48px;
-      padding: 13px 20px;
+      padding: 12px 22px;
       border-radius: 999px;
-      font-weight: 800;
-      transition: transform 0.2s ease, background 0.2s ease;
+      font-weight: 700;
+      text-align: center;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .button:hover {
@@ -239,181 +277,275 @@
       color: var(--navy);
     }
 
-    .button-secondary {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
+    .button-primary:hover {
+      background: #74eaff;
     }
 
+    .button-secondary {
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--cyan);
+    }
+
+    .hero-frame {
+      position: relative;
+      isolation: isolate;
+      min-width: 0;
+    }
+
+    .hero-frame img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 6px rgba(0,217,255,0.06);
+    }
+
+    .hero-frame::before {
+      content: "";
+      position: absolute;
+      inset: -10% -6%;
+      z-index: -1;
+      border: 2px solid transparent;
+      border-top-color: var(--cyan);
+      border-right-color: rgba(0,217,255,0.45);
+      border-radius: 50%;
+      transform: rotate(-8deg);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    /* Compass tape: one tick every 10 degrees */
+    .bearing {
+      border-top: 1px solid var(--line);
+    }
+
+    .bearing-inner {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0 12px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      font-variant-numeric: tabular-nums;
+      border-right: 1px solid var(--line-strong);
+      background: repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px calc(100% / 36)) top left / 100% 7px no-repeat;
+    }
+
+    .bearing-inner span:first-child {
+      padding-left: 6px;
+    }
+
+    .bearing-inner span:last-child {
+      padding-right: 6px;
+    }
+
+    /* Sections */
     section {
-      padding: 100px 0;
+      padding: 88px 0;
     }
 
     .section-heading {
-      max-width: 700px;
-      margin-bottom: 42px;
+      max-width: 720px;
+      margin-bottom: 36px;
     }
 
-    .section-heading h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.05;
-      margin-bottom: 15px;
+    .section-heading h2,
+    .wider-box h2 {
+      font-size: clamp(1.4rem, 2.7vw, 2.25rem);
+      line-height: 1.2;
+      margin-bottom: 12px;
     }
 
     .section-heading p {
       color: var(--muted);
-      font-size: 1.08rem;
+      font-size: 1.05rem;
     }
 
+    /* Intro */
     .intro {
-      background: linear-gradient(180deg, var(--navy), #09263b
-);
+      background: linear-gradient(180deg, var(--navy), var(--deep));
     }
 
     .intro-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 48px;
       align-items: center;
     }
 
+    .intro .section-heading {
+      margin-bottom: 16px;
+    }
+
     .intro-copy {
+      max-width: 58ch;
       color: var(--muted);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
 
     .intro-panel {
-      padding: 34px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 26px;
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
     }
 
-    .intro-panel strong {
-      display: block;
-      color: var(--cyan);
-      font-size: 2rem;
-      margin-bottom: 6px;
+    .intro-panel p {
+      min-width: 0;
+      color: var(--soft);
     }
 
+    .orbit {
+      position: relative;
+      flex: none;
+      width: 132px;
+      height: 132px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+    }
+
+    .orbit span {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 1.45rem;
+      color: var(--cyan);
+    }
+
+    .orbit::before {
+      content: "";
+      position: absolute;
+      inset: 24% -11%;
+      border: 2px solid var(--cyan);
+      border-left-color: transparent;
+      border-radius: 50%;
+      transform: rotate(-14deg);
+      opacity: 0.75;
+    }
+
+    .orbit::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: radial-gradient(circle 5px at 50% 5px, var(--sunset) 96%, transparent);
+      animation: orbit-spin 24s linear infinite;
+    }
+
+    @keyframes orbit-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Feature cards */
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .feature-card {
-      min-height: 220px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 26px;
+      gap: 14px;
+      padding: 24px;
       border-radius: var(--radius);
-      background: linear-gradient(145deg, rgba(0,217,255,0.12), rgba(255,255,255,0.05));
-      border: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(0,217,255,0.09), rgba(255,255,255,0.03) 60%);
+      border: 1px solid var(--line);
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--cyan);
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
     }
 
     .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 15px;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: var(--cyan);
+      background: rgba(0,217,255,0.1);
+      border: 1px solid var(--line-strong);
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .feature-body {
+      min-width: 0;
     }
 
     .feature-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 7px;
+      font-size: 1.15rem;
+      margin-bottom: 4px;
     }
 
     .feature-card p {
       color: var(--muted);
       font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     .card-link {
-      display: inline-block;
-      margin-top: 18px;
+      margin-top: auto;
       color: var(--cyan);
-      font-weight: 800;
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
+    /* 360° section */
     .wider-views {
-      background: linear-gradient(110deg, #05263b 0%, #06243a 62%, #0b3b4c 100%);
-      overflow: hidden;
+      background: linear-gradient(180deg, var(--deep), #072033 55%, var(--ink));
+      border-top: 1px solid var(--line);
     }
 
-    .wider-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 48px;
-      align-items: center;
-      min-height: 300px;
+    .wider-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px 32px;
+      margin-bottom: 28px;
     }
 
     .wider-box {
-      max-width: 650px;
-    }
-
-    .wider-box h2 {
-      font-size: 1.5rem;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      min-width: 0;
+      max-width: 640px;
     }
 
     .wider-box p {
-      color: #ffffff;
-      font-size: 1rem;
-      line-height: 1.45;
-      margin-bottom: 26px;
-      max-width: 600px;
+      color: var(--soft);
+      font-size: 1.05rem;
     }
 
-    .orbit-wrap {
+    .video-360-stage {
       display: grid;
-      place-items: center;
-      min-height: 270px;
-    }
-
-    .orbit {
-      width: 260px;
-      height: 260px;
-      border: 1px solid rgba(89,221,236,0.24);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .orbit::before {
-      content: "";
-      width: 190px;
-      height: 190px;
-      border: 1px solid rgba(89,221,236,0.58);
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .orbit span {
-      position: relative;
-      z-index: 1;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 4.3rem;
-      color: #9aeaf1;
-      letter-spacing: -0.04em;
+      gap: 14px;
     }
 
     .video-360-wrap {
-      grid-column: 1 / -1;
-      margin-top: 12px;
       border-radius: 22px;
       overflow: hidden;
-      border: 1px solid rgba(89,221,236,0.22);
+      border: 1px solid var(--line-strong);
       background: #031522;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.24);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.42);
       aspect-ratio: 16 / 9;
     }
 
@@ -442,6 +574,10 @@
       background: transparent;
     }
 
+    .video-360-drag.dragging {
+      cursor: grabbing;
+    }
+
     .video-360-preview {
       position: absolute;
       inset: 0;
@@ -459,29 +595,74 @@
 
     .video-360-preview span {
       position: absolute;
-      bottom: 24px;
-      padding: 12px 18px;
+      bottom: 18px;
+      max-width: calc(100% - 24px);
+      padding: 11px 18px;
       border-radius: 999px;
       background: var(--cyan);
       color: var(--navy);
-      font-weight: 800;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .video-360-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 5;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(3,21,34,0.8);
+      color: #9aeaf1;
+      border: 1px solid var(--line-strong);
+      font-size: 0.8rem;
+      font-weight: 700;
+      pointer-events: none;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
     }
 
     .video-360-notice {
-      padding: 16px 20px;
+      padding: 14px 18px;
       border: 1px solid var(--sunset);
       border-radius: 14px;
       background: rgba(255,180,84,0.1);
-      color: #ffffff;
+      color: var(--text);
+      font-size: 0.95rem;
     }
 
-    .video-360-notice[hidden],
-    .video-360-preview[hidden],
-    .video-360-control[hidden],
-    .video-360-note[hidden],
-    .video-360-status[hidden],
-    .video-360-drag[hidden] {
-      display: none;
+    .video-360-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-360-control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 9px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .video-360-control:hover {
+      background: rgba(255,255,255,0.13);
+    }
+
+    .video-360-control.primary {
+      background: var(--cyan);
+      color: var(--navy);
+      border-color: transparent;
     }
 
     .video-360-control:disabled {
@@ -489,10 +670,15 @@
       cursor: default;
     }
 
-    .video-360-stage {
-      grid-column: 1 / -1;
-      display: grid;
-      gap: 24px;
+    .video-360-status {
+      margin-left: auto;
+      color: #9aeaf1;
+      font-size: 0.86rem;
+    }
+
+    .video-360-note {
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
     .video-360-stage:fullscreen,
@@ -511,238 +697,293 @@
       flex: 1;
       min-height: 200px;
       aspect-ratio: auto;
-      margin-top: 0;
     }
 
-    .video-360-stage:fullscreen .video-360-controls,
-    .video-360-stage:-webkit-full-screen .video-360-controls {
-      margin-top: 0;
+    /* 360° photos */
+    .photo-360-block {
+      margin-top: 64px;
     }
 
-    @media (max-width: 560px) {
-      .video-360-wrap {
-        min-height: 220px;
-      }
-
-      .video-360-controls {
-        margin-top: 0;
-      }
-
-      .video-360-status {
-        width: 100%;
-        margin-left: 0;
-      }
-    }
-
-    .video-360-drag.dragging {
-      cursor: grabbing;
-    }
-
-    .video-360-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      z-index: 5;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(3,21,34,0.78);
-      color: #9aeaf1;
-      border: 1px solid rgba(154,234,241,0.34);
-      font-size: 0.82rem;
-      font-weight: 800;
-      pointer-events: none;
-      backdrop-filter: blur(8px);
-    }
-
-    .video-360-controls {
-      grid-column: 1 / -1;
+    .photo-360-head {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin-top: -28px;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px 24px;
+      margin-bottom: 20px;
     }
 
-    .video-360-control {
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.08);
-      color: #ffffff;
-      min-height: 42px;
-      padding: 9px 14px;
+    .photo-360-head h3 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+
+    .photo-360-head p {
+      color: var(--muted);
+    }
+
+    .photo-tabs {
+      display: none;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .photo-tab {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 44px;
+      padding: 8px 6px;
+      border: 1px solid var(--line-strong);
       border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
       font: inherit;
-      font-weight: 800;
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.15;
       cursor: pointer;
     }
 
-    .video-360-control:hover {
-      background: rgba(255,255,255,0.14);
-    }
-
-    .video-360-control.primary {
+    .photo-tab[aria-pressed="true"] {
       background: var(--cyan);
       color: var(--navy);
       border-color: transparent;
     }
 
-    .video-360-note {
-      grid-column: 1 / -1;
-      margin-top: 0;
-      color: #b7ccd8;
-      font-size: 0.92rem;
-    }
-
-    .video-360-status {
-      color: #9aeaf1;
-      font-size: 0.86rem;
-      margin-left: auto;
-    }
-
-
     .photo-360-grid {
-      grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
     }
 
     .photo-360-section {
       min-width: 0;
-      margin-top: 12px;
-    }
-
-    .photo-360-section h3 {
-      font-size: 1.35rem;
-      margin-bottom: 10px;
-    }
-
-    .photo-360-section p {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .photo-360-embed {
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
-      overflow: hidden;
-      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: #ffffff;
     }
 
-    .photo-360-embed iframe {
-      display: block;
+    .photo-360-title {
+      padding: 6px 6px 0;
+    }
+
+    .photo-360-title h4 {
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .photo-360-title span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* On-site 360° viewer: a preview image until the visitor opens it, then a live panorama. */
+    .pano-stage {
+      position: relative;
       width: 100%;
-      height: 437px;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #031522;
+    }
+
+    .pano-poster {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pano-start {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 16px;
       border: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(3,15,25,0.7));
+      color: var(--navy);
+      font: inherit;
+      cursor: pointer;
     }
 
-    .photo-360-link {
-      display: block;
-      margin-top: 14px;
+    .pano-start span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--cyan);
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .pano-start:hover span {
+      transform: translateY(-2px);
+    }
+
+    .pano-start svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .photo-360-section.is-loading .pano-start span {
+      opacity: 0.75;
+    }
+
+    .photo-360-section.is-live .pano-poster,
+    .photo-360-section.is-live .pano-start {
+      display: none;
+    }
+
+    .pano-tools {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .pano-tool {
+      pointer-events: auto;
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(3,21,34,0.78);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .pano-tool[aria-pressed="true"] {
+      background: var(--cyan);
+      color: var(--navy);
+      border-color: transparent;
+    }
+
+    .pano-tool.pano-full {
+      margin-left: auto;
+    }
+
+    .pano-message {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 200;
+      padding: 10px 14px;
+      border: 1px solid var(--sunset);
+      border-radius: 12px;
+      background: rgba(3,21,34,0.9);
+      color: var(--text);
+      font-size: 0.88rem;
+    }
+
+    .pano-stage .psv-container {
+      position: absolute;
+      inset: 0;
+    }
+
+    .photo-360-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 0 2px;
+    }
+
+    .photo-360-actions a {
+      flex: 1 1 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
       color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.9rem;
       text-align: center;
-      font-weight: 800;
     }
 
-    @media (max-width: 900px) {
-      .photo-360-grid {
-        grid-template-columns: 1fr;
-      }
+    .photo-360-actions a.is-primary {
+      background: rgba(0,217,255,0.14);
     }
 
-    @media (max-width: 560px) {
-      .photo-360-embed iframe {
-        height: 540px;
-      }
+    .photo-360-actions a:hover {
+      border-color: var(--cyan);
     }
 
+    /* Socials */
     .social-section {
-      background: #f4f8f9;
-      color: #071c2e;
+      background: var(--ink);
+      border-top: 1px solid var(--line);
     }
 
-    .social-section .eyebrow {
-      color: #087c8d;
-    }
-
-    .social-section .section-heading h2 {
-      color: #071c2e;
-    }
-
-    .social-section .section-heading p {
-      color: #496376;
-    }
-
-    .social-section .section-heading {
-      max-width: 660px;
-      margin-bottom: 34px;
-    }
-
-    .social-section .section-heading h2 {
-      font-size: 1.5rem;
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .social-section .section-heading p {
-      font-size: 1rem;
-      line-height: 1.45;
+    .only-narrow {
+      display: none;
     }
 
     .social-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
     }
 
     .social-card {
-      display: block;
-      padding: 22px;
-      border-radius: var(--radius);
-      background: #ffffff;
-      border: 1px solid rgba(7,28,46,0.10);
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
       text-align: center;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 12px 30px rgba(7,28,46,0.06);
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .social-card:hover {
-      transform: translateY(-5px);
-      border-color: #59ddec;
-      box-shadow: 0 16px 36px rgba(7,28,46,0.10);
-    }
-
-    .social-card h3 {
-      margin: 15px 0 5px;
-      color: #071c2e;
-      font-size: 1.1875rem;
-    }
-
-    .social-card p {
-      color: #496376;
-      font-size: 1rem;
-      line-height: 1.35;
-      margin-bottom: 16px;
+      transform: translateY(-4px);
+      border-color: var(--cyan);
     }
 
     .qr-wrap {
-      min-height: 195px;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
       display: grid;
       place-items: center;
+      padding: 8px;
       background: #ffffff;
-      border-radius: 16px;
-      padding: 10px;
-      position: relative;
+      border-radius: 14px;
     }
 
     .qr-image {
-      width: 170px;
-      height: 170px;
-      max-width: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      display: block;
     }
 
     .qr-badge {
@@ -752,11 +993,13 @@
       transform: translate(-50%, -50%);
       width: 34px;
       height: 34px;
-      border-radius: 9px;
       display: grid;
       place-items: center;
+      border-radius: 9px;
       background: #ffffff;
       box-shadow: 0 0 0 5px #ffffff;
+      color: #071c2e;
+      font-weight: 800;
       overflow: hidden;
     }
 
@@ -770,43 +1013,65 @@
       background: #fffc00;
     }
 
-    .social-button {
-      display: inline-block;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: #e3f7f8;
-      color: #075668;
-      font-weight: 800;
-      font-size: 1rem;
+    .qr-badge.no-icon::before {
+      content: attr(data-initial);
     }
 
+    .social-text {
+      min-width: 0;
+    }
+
+    .social-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 2px;
+    }
+
+    .social-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .social-button {
+      margin-top: auto;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0,217,255,0.12);
+      border: 1px solid var(--line-strong);
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* Footer */
     .site-footer {
-      padding: 55px 0 30px;
-      background: #04121e;
-      border-top: 1px solid var(--border);
+      padding: 52px 0 28px;
+      background: var(--ink);
+      border-top: 1px solid var(--line);
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 35px;
-      margin-bottom: 40px;
+      gap: 32px;
+      margin-bottom: 36px;
     }
 
     .footer-brand p {
       color: var(--muted);
       max-width: 340px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .footer-title {
-      font-weight: 800;
-      margin-bottom: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
     .footer-links {
       display: grid;
-      gap: 9px;
+      gap: 8px;
       color: var(--muted);
     }
 
@@ -815,35 +1080,51 @@
     }
 
     .copyright {
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 0.9rem;
       display: flex;
       justify-content: space-between;
-      gap: 15px;
+      gap: 6px 15px;
       flex-wrap: wrap;
     }
 
+    /* Tablet */
     @media (max-width: 1120px) {
       .social-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .social-card {
+        grid-column: span 2;
+      }
+
+      .social-card:nth-child(4) {
+        grid-column: 2 / span 2;
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1020px) {
+      .menu-toggle {
+        display: grid;
+      }
+
       .nav-links {
         position: absolute;
-        top: 76px;
-        left: 20px;
-        right: 20px;
+        top: calc(100% + 8px);
+        left: var(--gutter);
+        right: var(--gutter);
         display: none;
         flex-direction: column;
         align-items: stretch;
-        padding: 20px;
+        gap: 2px;
+        padding: 12px;
         border-radius: 18px;
         background: #09263b;
-        border: 1px solid var(--border);
+        border: 1px solid var(--line-strong);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        font-size: 1rem;
       }
 
       .nav-links.open {
@@ -851,75 +1132,210 @@
       }
 
       .nav-links a {
-        padding: 8px 0;
+        padding: 12px 14px;
       }
 
-      .menu-toggle {
-        display: block;
-      }
-
-      .intro-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .wider-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .orbit-wrap {
-        min-height: 220px;
-      }
-
-      .social-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .nav-links .nav-cta {
+        margin: 6px 0 0;
+        text-align: center;
       }
     }
 
-    @media (max-width: 560px) {
-      .container {
-        width: min(100% - 28px, 1180px);
+    @media (max-width: 960px) {
+      .photo-tabs {
+        display: flex;
       }
 
-      .hero {
-        min-height: 640px;
-        padding-top: 115px;
+      .photo-360-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero-logo {
-        width: 96px;
-        height: 96px;
+      .photo-360-section {
+        width: 100%;
+        max-width: 720px;
+        margin-inline: auto;
       }
 
-      h1 {
-        font-size: 2.55rem;
+      .js .photo-360-section:not(.is-active) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
       }
 
-      .orbit {
-        width: 220px;
-        height: 220px;
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+    }
 
-      .orbit::before {
-        width: 160px;
-        height: 160px;
-      }
-
-      .orbit span {
-        font-size: 3.6rem;
-      }
-
-      .feature-grid,
-      .social-grid {
-        grid-template-columns: 1fr;
+    /* Phone */
+    @media (max-width: 760px) {
+      :root {
+        --gutter: 16px;
+        --header-h: 62px;
       }
 
       section {
-        padding: 72px 0;
+        padding: 56px 0;
+      }
+
+      .hero {
+        padding: calc(var(--header-h) + 18px) 0 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 26px;
+        padding-bottom: 40px;
+      }
+
+      .hero-frame {
+        order: -1;
+      }
+
+      .hero-frame img {
+        border-radius: 18px;
+      }
+
+      .actions .button {
+        flex: 1 1 100%;
+      }
+
+      .section-heading {
+        margin-bottom: 26px;
+      }
+
+      .bearing-inner {
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .wider-head .button {
+        width: 100%;
+      }
+
+      .video-360-wrap {
+        border-radius: 16px;
+      }
+
+      .video-360-controls .video-360-control {
+        flex: 1 1 auto;
+      }
+
+      .video-360-status {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .photo-360-block {
+        margin-top: 44px;
+      }
+
+      .only-wide {
+        display: none;
+      }
+
+      .only-narrow {
+        display: inline;
+      }
+
+      .social-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .social-card,
+      .social-card:nth-child(4) {
+        grid-column: auto;
+      }
+
+      .social-card {
+        flex-direction: row;
+        text-align: left;
+        padding: 12px 14px;
+      }
+
+      .social-card:hover {
+        transform: none;
+      }
+
+      .qr-wrap {
+        flex: none;
+        width: 44px;
+        padding: 0;
+        border-radius: 12px;
+      }
+
+      .qr-image {
+        display: none;
+      }
+
+      .qr-badge {
+        position: static;
+        transform: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        box-shadow: none;
+      }
+
+      .social-text {
+        flex: 1;
+      }
+
+      .social-button {
+        margin-top: 0;
+        flex: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 20px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .feature-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .feature-card {
+        display: grid;
+        grid-template-columns: 46px minmax(0, 1fr);
+        gap: 8px 14px;
+        padding: 16px;
+      }
+
+      .feature-card:hover {
+        transform: none;
+      }
+
+      .card-link {
+        grid-column: 2;
+        margin-top: 0;
+      }
+
+      .intro-panel {
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .orbit {
+        width: 104px;
+        height: 104px;
+      }
+
+      .orbit span {
+        font-size: 1.15rem;
       }
 
       .copyright {
@@ -933,6 +1349,7 @@
       *::after {
         scroll-behavior: auto !important;
         transition: none !important;
+        animation: none !important;
       }
     }
   </style>
@@ -943,12 +1360,12 @@
   <header class="site-header">
     <div class="container nav">
       <a href="#home" class="brand" aria-label="RoamView 360 home">
-        <img src="logo.jpg" alt="RoamView 360 logo" />
+        <img src="logo.jpg" alt="RoamView 360 logo" width="42" height="42" />
         <span>RoamView 360</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
-        ☰
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
       </button>
 
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
@@ -965,20 +1382,14 @@
 
   <main>
     <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
+      <div class="container hero-grid">
+        <div class="hero-copy">
           <div class="eyebrow">See beyond the postcard</div>
 
-          <img
-            class="hero-logo"
-            src="logo.jpg"
-            alt="RoamView 360 circular travel logo"
-          />
-
-          <h1>Real places. Real<br />experiences. A wider<br />view.</h1>
+          <h1>Real places. Real experiences. <span>A wider view.</span></h1>
 
           <p>
-            Step into real travel footage, scenic shorts and immersive 360° views.<br />
+            Step into real travel footage, scenic shorts and immersive 360° views.
             Explore the world as it feels, one view at a time.
           </p>
 
@@ -996,6 +1407,21 @@
               Watch the latest views ↗
             </a>
           </div>
+        </div>
+
+        <figure class="hero-frame">
+          <img
+            src="roamview360/og-preview-v5.jpg"
+            alt="RoamView 360 — Real places. Real experiences. A wider view."
+            width="2048"
+            height="1152"
+          />
+        </figure>
+      </div>
+
+      <div class="bearing" aria-hidden="true">
+        <div class="container bearing-inner">
+          <span>N 0°</span><span>E 90°</span><span>S 180°</span><span>W 270°</span><span>N 360°</span>
         </div>
       </div>
     </section>
@@ -1016,7 +1442,7 @@
         </div>
 
         <div class="intro-panel">
-          <strong>360°</strong>
+          <div class="orbit" aria-hidden="true"><span>360°</span></div>
           <p>
             A wider perspective for travelers who want to discover the world
             through real places and real experiences.
@@ -1037,8 +1463,10 @@
 
         <div class="feature-grid">
           <article class="feature-card">
-            <div>
-              <div class="feature-icon">🌍</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.6 2.5 4 5.6 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.6-4-9s1.4-6.5 4-9z" /></svg>
+            </div>
+            <div class="feature-body">
               <h3>Destinations</h3>
               <p>Discover scenic places, city highlights and memorable routes.</p>
             </div>
@@ -1046,8 +1474,10 @@
           </article>
 
           <article class="feature-card" id="hotels">
-            <div>
-              <div class="feature-icon">🏨</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M3 18v2M21 18v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" /></svg>
+            </div>
+            <div class="feature-body">
               <h3>Hotels</h3>
               <p>See accommodation ideas and stay experiences from around the world.</p>
             </div>
@@ -1055,8 +1485,10 @@
           </article>
 
           <article class="feature-card" id="transport">
-            <div>
-              <div class="feature-icon">🚆</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="14" rx="3" /><path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4M9 14h.01M15 14h.01" /></svg>
+            </div>
+            <div class="feature-body">
               <h3>Transport</h3>
               <p>Explore the ways travelers move through destinations.</p>
             </div>
@@ -1064,8 +1496,10 @@
           </article>
 
           <article class="feature-card" id="tips">
-            <div>
-              <div class="feature-icon">🧭</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M15.5 8.5l-2 5-5 2 2-5z" /></svg>
+            </div>
+            <div class="feature-body">
               <h3>Travel Tips</h3>
               <p>Practical ideas to help you plan more confidently.</p>
             </div>
@@ -1073,8 +1507,10 @@
           </article>
 
           <article class="feature-card" id="experiences">
-            <div>
-              <div class="feature-icon">🌐</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-18 12 12)" /></svg>
+            </div>
+            <div class="feature-body">
               <h3>360° Experiences</h3>
               <p>Take a more immersive look at places worth exploring.</p>
             </div>
@@ -1082,8 +1518,10 @@
           </article>
 
           <article class="feature-card">
-            <div>
-              <div class="feature-icon">🎥</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="M10 9.5v5l4.5-2.5z" /></svg>
+            </div>
+            <div class="feature-body">
               <h3>Scenic Shorts</h3>
               <p>Quick visual escapes featuring real scenery and travel moments.</p>
             </div>
@@ -1094,14 +1532,16 @@
     </section>
 
     <section class="wider-views">
-      <div class="container wider-grid">
-        <div class="wider-box">
-          <div class="eyebrow">Immersive by nature</div>
-          <h2>Wider views. Closer to being there.</h2>
-          <p>
-            Explore immersive 360° travel experiences that let you look around, linger and
-            find your own perspective.
-          </p>
+      <div class="container">
+        <div class="wider-head">
+          <div class="wider-box">
+            <div class="eyebrow">Immersive by nature</div>
+            <h2>Wider views. Closer to being there.</h2>
+            <p>
+              Explore immersive 360° travel experiences that let you look around, linger and
+              find your own perspective.
+            </p>
+          </div>
 
           <a
             class="button button-primary"
@@ -1113,84 +1553,115 @@
           </a>
         </div>
 
-        <div class="orbit-wrap" aria-hidden="true">
-          <div class="orbit"><span>360°</span></div>
-        </div>
-
         <div class="video-360-stage" id="yt360Stage">
-        <div class="video-360-notice" id="yt360Notice" role="status" hidden></div>
-        <div class="video-360-wrap" aria-label="Interactive 360° YouTube video">
-          <div class="video-360-player">
-            <div id="yt360Player"></div>
-            <a class="video-360-preview" id="yt360Preview" href="https://www.youtube.com/watch?v=f-ts9TR59qU" target="_blank" rel="noopener noreferrer" aria-label="Open the 360 degree video in YouTube">
-              <img src="https://i.ytimg.com/vi/f-ts9TR59qU/hqdefault.jpg" alt="Preview of Seelisberg 360° — Brunnen to Treib by boat" />
-              <span>View 360° in YouTube ↗</span>
-            </a>
-            <div
-              class="video-360-drag"
-              id="yt360Drag"
-              hidden
-              role="application"
-              tabindex="0"
-              aria-label="Drag to look around the 360 degree video. Use arrow keys to change view."
-            ></div>
-            <div class="video-360-badge" id="yt360Badge">360° video</div>
+          <div class="video-360-notice" id="yt360Notice" role="status" hidden></div>
+          <div class="video-360-wrap" aria-label="Interactive 360° YouTube video">
+            <div class="video-360-player">
+              <div id="yt360Player"></div>
+              <a class="video-360-preview" id="yt360Preview" href="https://www.youtube.com/watch?v=f-ts9TR59qU" target="_blank" rel="noopener noreferrer" aria-label="Open the 360 degree video in YouTube">
+                <img src="https://i.ytimg.com/vi/f-ts9TR59qU/hqdefault.jpg" alt="Preview of Seelisberg 360° — Brunnen to Treib by boat" />
+                <span>View 360° in YouTube ↗</span>
+              </a>
+              <div
+                class="video-360-drag"
+                id="yt360Drag"
+                hidden
+                role="application"
+                tabindex="0"
+                aria-label="Drag to look around the 360 degree video. Use arrow keys to change view."
+              ></div>
+              <div class="video-360-badge" id="yt360Badge">360° video</div>
+            </div>
+          </div>
+
+          <div class="video-360-controls" aria-label="360 video controls">
+            <button class="video-360-control primary" id="yt360Play" type="button">Play</button>
+            <button class="video-360-control" id="yt360Reset" type="button" disabled>Reset view</button>
+            <button class="video-360-control" id="yt360ZoomIn" type="button" disabled>Zoom in</button>
+            <button class="video-360-control" id="yt360ZoomOut" type="button" disabled>Zoom out</button>
+            <button class="video-360-control" id="yt360Fullscreen" type="button">Full screen</button>
+            <a class="video-360-control" href="https://www.youtube.com/watch?v=f-ts9TR59qU" target="_blank" rel="noopener noreferrer">Open 360° in YouTube ↗</a>
+            <span class="video-360-status" role="status" id="yt360Status">Loading 360° player…</span>
+          </div>
+
+          <div class="video-360-note" id="yt360Note">
+            Checking whether this browser supports interactive 360° video…
           </div>
         </div>
 
-        <div class="video-360-controls" aria-label="360 video controls">
-          <button class="video-360-control primary" id="yt360Play" type="button">Play</button>
-          <button class="video-360-control" id="yt360Reset" type="button" disabled>Reset view</button>
-          <button class="video-360-control" id="yt360ZoomIn" type="button" disabled>Zoom in</button>
-          <button class="video-360-control" id="yt360ZoomOut" type="button" disabled>Zoom out</button>
-          <button class="video-360-control" id="yt360Fullscreen" type="button">Full screen</button>
-          <a class="video-360-control" href="https://www.youtube.com/watch?v=f-ts9TR59qU" target="_blank" rel="noopener noreferrer">Open 360° in YouTube ↗</a>
-          <span class="video-360-status" role="status" id="yt360Status">Loading 360° player…</span>
-        </div>
-
-        <div class="video-360-note" id="yt360Note">
-          Checking whether this browser supports interactive 360° video…
-        </div>
-        </div>
-
-        <div class="photo-360-grid">
-        <div class="photo-360-section">
-          <h3>Lauterbrunnen, Switzerland · 360° photo</h3>
-          <p>Click the photo, then drag or swipe to look around.</p>
-          <div class="photo-360-embed">
-            <iframe
-              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Froamview360%2Fposts%2Fpfbid033W7VRnbzK49AzVfZY89mjKBMXaPvGRY2nCYy3UaTShj99dwaRpJ7B4mA6AehctEjl&amp;show_text=true&amp;width=500"
-              width="500"
-              height="437"
-              title="RoamView 360 interactive photo of Lauterbrunnen, Switzerland"
-              loading="lazy"
-              style="border:none;overflow:hidden"
-              scrolling="no"
-              allowfullscreen
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            ></iframe>
+        <div class="photo-360-block">
+          <div class="photo-360-head">
+            <h3>360° photos</h3>
+            <p>Open a photo, then drag, swipe or move your phone to look around.</p>
           </div>
-          <a class="photo-360-link" href="https://www.facebook.com/roamview360/posts/pfbid033W7VRnbzK49AzVfZY89mjKBMXaPvGRY2nCYy3UaTShj99dwaRpJ7B4mA6AehctEjl" target="_blank" rel="noopener noreferrer">View photo on Facebook ↗</a>
-        </div>
 
-        <div class="photo-360-section">
-          <h3>Seelisberg, Switzerland · 360° photo</h3>
-          <p>Click the photo, then drag or swipe to look around.</p>
-          <div class="photo-360-embed">
-            <iframe
-              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Froamview360%2Fposts%2Fpfbid0ghLpLmKd6gnS66iXbuejwFSv8xNhixRbYTycjfNsSHZEa9fEi69PfxjqGnxSzwtMl&amp;show_text=true&amp;width=500"
-              width="500"
-              height="437"
-              title="RoamView 360 interactive photo of Seelisberg, Switzerland"
-              loading="lazy"
-              style="border:none;overflow:hidden"
-              scrolling="no"
-              allowfullscreen
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            ></iframe>
+          <div class="photo-tabs" aria-label="Choose a 360° photo">
+            <button class="photo-tab" type="button" aria-pressed="true">Lauterbrunnen</button>
+            <button class="photo-tab" type="button" aria-pressed="false">Seelisberg</button>
+            <button class="photo-tab" type="button" aria-pressed="false">In the clouds</button>
           </div>
-          <a class="photo-360-link" href="https://www.facebook.com/roamview360/posts/pfbid0ghLpLmKd6gnS66iXbuejwFSv8xNhixRbYTycjfNsSHZEa9fEi69PfxjqGnxSzwtMl" target="_blank" rel="noopener noreferrer">View photo on Facebook ↗</a>
-        </div>
+
+          <div class="photo-360-grid">
+            <div class="photo-360-section is-active" data-pano="360/lauterbrunnen.jpg" data-yaw="172" data-pitch="12" data-name="Lauterbrunnen, Switzerland">
+              <div class="photo-360-title">
+                <h4>Lauterbrunnen</h4>
+                <span>Switzerland · 360° photo</span>
+              </div>
+              <div class="pano-stage">
+                <img class="pano-poster" src="360/lauterbrunnen-poster.jpg" alt="View of Lauterbrunnen, Switzerland" width="1200" height="900" loading="lazy" />
+                <button class="pano-start" type="button" aria-label="Open the 360° photo of Lauterbrunnen, Switzerland">
+                  <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" /><ellipse cx="12" cy="12" rx="10" ry="4.6" /></svg>
+                    <b class="pano-start-label">Look around in 360°</b>
+                  </span>
+                </button>
+              </div>
+              <div class="photo-360-actions">
+                <a class="is-primary" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener noreferrer">Follow on Facebook ↗</a>
+                <a href="https://www.facebook.com/roamview360/posts/pfbid033W7VRnbzK49AzVfZY89mjKBMXaPvGRY2nCYy3UaTShj99dwaRpJ7B4mA6AehctEjl" target="_blank" rel="noopener noreferrer">View post ↗</a>
+              </div>
+            </div>
+
+            <div class="photo-360-section" data-pano="360/seelisberg.jpg" data-yaw="-27" data-pitch="2" data-name="Seelisberg, Switzerland">
+              <div class="photo-360-title">
+                <h4>Seelisberg</h4>
+                <span>Switzerland · 360° photo</span>
+              </div>
+              <div class="pano-stage">
+                <img class="pano-poster" src="360/seelisberg-poster.jpg" alt="View of Seelisberg, Switzerland" width="1200" height="900" loading="lazy" />
+                <button class="pano-start" type="button" aria-label="Open the 360° photo of Seelisberg, Switzerland">
+                  <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" /><ellipse cx="12" cy="12" rx="10" ry="4.6" /></svg>
+                    <b class="pano-start-label">Look around in 360°</b>
+                  </span>
+                </button>
+              </div>
+              <div class="photo-360-actions">
+                <a class="is-primary" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener noreferrer">Follow on Facebook ↗</a>
+                <a href="https://www.facebook.com/roamview360/posts/pfbid0ghLpLmKd6gnS66iXbuejwFSv8xNhixRbYTycjfNsSHZEa9fEi69PfxjqGnxSzwtMl" target="_blank" rel="noopener noreferrer">View post ↗</a>
+              </div>
+            </div>
+
+            <div class="photo-360-section" data-pano="360/seelisberg-clouds.jpg" data-yaw="-9" data-pitch="-4" data-name="Seelisberg in the clouds, Switzerland">
+              <div class="photo-360-title">
+                <h4>Seelisberg in the clouds</h4>
+                <span>Switzerland · 360° photo</span>
+              </div>
+              <div class="pano-stage">
+                <img class="pano-poster" src="360/seelisberg-clouds-poster.jpg" alt="View of Seelisberg in the clouds, Switzerland" width="1200" height="900" loading="lazy" />
+                <button class="pano-start" type="button" aria-label="Open the 360° photo of Seelisberg in the clouds, Switzerland">
+                  <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" /><ellipse cx="12" cy="12" rx="10" ry="4.6" /></svg>
+                    <b class="pano-start-label">Look around in 360°</b>
+                  </span>
+                </button>
+              </div>
+              <div class="photo-360-actions">
+                <a class="is-primary" href="https://www.facebook.com/roamview360" target="_blank" rel="noopener noreferrer">Follow on Facebook ↗</a>
+                <a href="https://www.facebook.com/roamview360/posts/pfbid0SupDPoGUffhi9tMBkjMMYDWZ4sz2yo2oqzHEfh5C1uPBdD74XoVeBHWqJtxByhE6l" target="_blank" rel="noopener noreferrer">View post ↗</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1201,7 +1672,8 @@
           <div class="eyebrow">Follow the journey</div>
           <h2>Take the next view with you.</h2>
           <p>
-            Scan a code or select a platform to find RoamView 360. Every code takes you directly to its matching channel.
+            <span class="only-wide">Scan a code or select a platform to find RoamView 360. Every code takes you directly to its matching channel.</span>
+            <span class="only-narrow">Select a platform to find RoamView 360.</span>
           </p>
         </div>
 
@@ -1216,10 +1688,12 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.youtube.com%2F%40roamview.360%3Fsub_confirmation%3D1&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to subscribe to RoamView 360 on YouTube" loading="lazy" />
-              <span class="qr-badge"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="" /></span>
+              <span class="qr-badge" data-initial="Y"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="" onerror="this.parentNode.classList.add('no-icon');this.remove()" /></span>
             </div>
-            <h3>YouTube</h3>
-            <p>360° videos, scenic Shorts and destination views.</p>
+            <div class="social-text">
+              <h3>YouTube</h3>
+              <p>360° videos, scenic Shorts and destination views.</p>
+            </div>
             <span class="social-button">Subscribe ↗</span>
           </a>
 
@@ -1232,10 +1706,12 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.instagram.com%2Froamview360%2F&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on Instagram" loading="lazy" />
-              <span class="qr-badge"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" /></span>
+              <span class="qr-badge" data-initial="I"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" onerror="this.parentNode.classList.add('no-icon');this.remove()" /></span>
             </div>
-            <h3>Instagram</h3>
-            <p>Reels, photos and moments from real trips.</p>
+            <div class="social-text">
+              <h3>Instagram</h3>
+              <p>Reels, photos and moments from real trips.</p>
+            </div>
             <span class="social-button">Follow ↗</span>
           </a>
 
@@ -1248,10 +1724,12 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.facebook.com%2Froamview360&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on Facebook" loading="lazy" />
-              <span class="qr-badge"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="" /></span>
+              <span class="qr-badge" data-initial="F"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="" onerror="this.parentNode.classList.add('no-icon');this.remove()" /></span>
             </div>
-            <h3>Facebook</h3>
-            <p>Travel videos, scenic posts and 360° content.</p>
+            <div class="social-text">
+              <h3>Facebook</h3>
+              <p>Travel videos, scenic posts and 360° content.</p>
+            </div>
             <span class="social-button">Follow ↗</span>
           </a>
 
@@ -1264,10 +1742,12 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.tiktok.com%2F%40roamview360travel&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on TikTok" loading="lazy" />
-              <span class="qr-badge"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="" /></span>
+              <span class="qr-badge" data-initial="T"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="" onerror="this.parentNode.classList.add('no-icon');this.remove()" /></span>
             </div>
-            <h3>TikTok</h3>
-            <p>Quick travel stories and scenic reveals.</p>
+            <div class="social-text">
+              <h3>TikTok</h3>
+              <p>Quick travel stories and scenic reveals.</p>
+            </div>
             <span class="social-button">Follow ↗</span>
           </a>
 
@@ -1280,10 +1760,12 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Froamview360&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on Snapchat" loading="lazy" />
-              <span class="qr-badge snapchat"><img src="https://cdn.simpleicons.org/snapchat/000000" alt="" /></span>
+              <span class="qr-badge snapchat" data-initial="S"><img src="https://cdn.simpleicons.org/snapchat/000000" alt="" onerror="this.parentNode.classList.add('no-icon');this.remove()" /></span>
             </div>
-            <h3>Snapchat</h3>
-            <p>Travel stories and real trip moments.</p>
+            <div class="social-text">
+              <h3>Snapchat</h3>
+              <p>Travel stories and real trip moments.</p>
+            </div>
             <span class="social-button">Follow ↗</span>
           </a>
 
@@ -1297,7 +1779,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#home" class="brand">
-            <img src="logo.jpg" alt="RoamView 360 logo" />
+            <img src="logo.jpg" alt="RoamView 360 logo" width="42" height="42" loading="lazy" />
             <span>RoamView 360</span>
           </a>
 
@@ -1355,6 +1837,155 @@
         navLinks.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+
+    // 360° photos: on-site viewer, opened on demand. One photo is live at a time.
+    document.documentElement.classList.add("js");
+
+    const photoTabs = Array.from(document.querySelectorAll(".photo-tab"));
+    const photoCards = Array.from(document.querySelectorAll(".photo-360-section"));
+    const panoTouch = window.matchMedia("(pointer: coarse)").matches;
+    let panoLibrary = null;
+    let panoActive = null;
+
+    function loadPanoLibrary() {
+      if (!panoLibrary) {
+        panoLibrary = new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "360/viewer.js";
+          script.onload = () => (window.RoamPano ? resolve(window.RoamPano) : reject(new Error("viewer missing")));
+          script.onerror = () => {
+            panoLibrary = null;
+            reject(new Error("viewer failed to load"));
+          };
+          document.head.appendChild(script);
+        });
+      }
+      return panoLibrary;
+    }
+
+    function showPanoMessage(stage, text) {
+      stage.querySelectorAll(".pano-message").forEach(old => old.remove());
+      const message = document.createElement("div");
+      message.className = "pano-message";
+      message.setAttribute("role", "status");
+      message.textContent = text;
+      stage.appendChild(message);
+      setTimeout(() => message.remove(), 7000);
+    }
+
+    function resetPanoCard(card) {
+      card.classList.remove("is-live", "is-loading");
+      card.querySelector(".pano-start-label").textContent = "Look around in 360°";
+    }
+
+    function closePano() {
+      if (!panoActive) return;
+      const { card, viewer, tools } = panoActive;
+      panoActive = null;
+      try { viewer.destroy(); } catch (_) {}
+      tools.remove();
+      resetPanoCard(card);
+    }
+
+    function openPano(card) {
+      if (card.classList.contains("is-loading") || (panoActive && panoActive.card === card)) return;
+      closePano();
+
+      const stage = card.querySelector(".pano-stage");
+      card.classList.add("is-loading");
+      card.querySelector(".pano-start-label").textContent = "Loading…";
+
+      // iPhone and iPad only allow motion access from a tap, so ask now, before anything loads.
+      let motionAnswer = null;
+      if (panoTouch && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+        motionAnswer = DeviceOrientationEvent.requestPermission().then(result => result === "granted").catch(() => false);
+      }
+
+      loadPanoLibrary().then(lib => {
+        const viewer = new lib.Viewer({
+          container: stage,
+          panorama: card.dataset.pano,
+          caption: card.dataset.name,
+          defaultYaw: card.dataset.yaw + "deg",
+          defaultPitch: card.dataset.pitch + "deg",
+          defaultZoomLvl: 20,
+          navbar: false,
+          mousewheelCtrlKey: true,
+          plugins: [[lib.GyroscopePlugin, { touchmove: true, moveMode: "smooth" }]]
+        });
+        const gyro = viewer.getPlugin(lib.GyroscopePlugin);
+
+        const tools = document.createElement("div");
+        tools.className = "pano-tools";
+        const motionButton = document.createElement("button");
+        motionButton.type = "button";
+        motionButton.className = "pano-tool";
+        motionButton.textContent = "Move with phone";
+        motionButton.setAttribute("aria-pressed", "false");
+        motionButton.hidden = true;
+        const fullButton = document.createElement("button");
+        fullButton.type = "button";
+        fullButton.className = "pano-tool pano-full";
+        fullButton.textContent = "Full screen";
+        tools.append(motionButton, fullButton);
+        stage.appendChild(tools);
+        tools.hidden = true;
+
+        panoActive = { card, viewer, tools };
+
+        motionButton.addEventListener("click", () => {
+          if (gyro.isEnabled()) {
+            gyro.stop();
+          } else {
+            gyro.start().catch(() => showPanoMessage(stage, "Motion access was not allowed. Reload the page, open the photo again and choose Allow when your phone asks."));
+          }
+        });
+        gyro.addEventListener("gyroscope-updated", event => {
+          motionButton.setAttribute("aria-pressed", String(event.gyroscopeEnabled));
+          motionButton.textContent = event.gyroscopeEnabled ? "Motion on" : "Move with phone";
+        });
+
+        fullButton.addEventListener("click", () => viewer.toggleFullscreen());
+        viewer.addEventListener("fullscreen", event => {
+          fullButton.textContent = event.fullscreenEnabled ? "Exit full screen" : "Full screen";
+        });
+
+        viewer.addEventListener("ready", () => {
+          if (!panoActive || panoActive.viewer !== viewer) return;
+          card.classList.remove("is-loading");
+          card.classList.add("is-live");
+          tools.hidden = false;
+          if (!panoTouch) return;
+          gyro.isSupported().then(supported => {
+            if (!supported || !panoActive || panoActive.viewer !== viewer) return;
+            motionButton.hidden = false;
+            Promise.resolve(motionAnswer).then(granted => {
+              if (granted !== false) gyro.start().catch(() => {});
+            });
+          });
+        }, { once: true });
+
+        viewer.addEventListener("panorama-error", () => {
+          if (panoActive && panoActive.viewer === viewer) closePano();
+          showPanoMessage(stage, "This 360° photo could not be loaded. Please try again.");
+        });
+      }).catch(() => {
+        resetPanoCard(card);
+        showPanoMessage(stage, "The 360° viewer could not be loaded. Please try again.");
+      });
+    }
+
+    photoCards.forEach(card => {
+      card.querySelector(".pano-start").addEventListener("click", () => openPano(card));
+    });
+
+    photoTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        closePano();
+        photoTabs.forEach((other, i) => other.setAttribute("aria-pressed", String(i === index)));
+        photoCards.forEach((card, i) => card.classList.toggle("is-active", i === index));
       });
     });
 

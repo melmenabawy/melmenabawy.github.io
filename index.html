@@ -442,6 +442,44 @@
       background: transparent;
     }
 
+    .video-360-preview {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      background: #031522;
+    }
+
+    .video-360-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-360-preview span {
+      position: absolute;
+      bottom: 24px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--cyan);
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .video-360-notice {
+      padding: 16px 20px;
+      border: 1px solid var(--sunset);
+      border-radius: 14px;
+      background: rgba(255,180,84,0.1);
+      color: #ffffff;
+    }
+
+    .video-360-notice[hidden],
+    .video-360-preview[hidden],
+    .video-360-control[hidden],
+    .video-360-note[hidden],
+    .video-360-status[hidden],
     .video-360-drag[hidden] {
       display: none;
     }
@@ -1080,9 +1118,14 @@
         </div>
 
         <div class="video-360-stage" id="yt360Stage">
+        <div class="video-360-notice" id="yt360Notice" role="status" hidden></div>
         <div class="video-360-wrap" aria-label="Interactive 360° YouTube video">
           <div class="video-360-player">
             <div id="yt360Player"></div>
+            <a class="video-360-preview" id="yt360Preview" href="https://www.youtube.com/watch?v=f-ts9TR59qU" target="_blank" rel="noopener noreferrer" aria-label="Open the 360 degree video in YouTube">
+              <img src="https://i.ytimg.com/vi/f-ts9TR59qU/hqdefault.jpg" alt="Preview of Seelisberg 360° — Brunnen to Treib by boat" />
+              <span>View 360° in YouTube ↗</span>
+            </a>
             <div
               class="video-360-drag"
               id="yt360Drag"
@@ -1106,7 +1149,7 @@
         </div>
 
         <div class="video-360-note" id="yt360Note">
-          Play the video to check 360° support. For the best experience on mobile, open it in the YouTube app.
+          Checking whether this browser supports interactive 360° video…
         </div>
         </div>
 
@@ -1336,6 +1379,27 @@
     const yt360Badge = document.getElementById("yt360Badge");
     const yt360Note = document.getElementById("yt360Note");
     const yt360Stage = document.getElementById("yt360Stage");
+    const yt360Preview = document.getElementById("yt360Preview");
+    const yt360Notice = document.getElementById("yt360Notice");
+    const yt360Mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+      || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    let yt360LoadTimer;
+
+    function show360Fallback(mobile = false) {
+      yt360Supported = false;
+      stop360Drag();
+      yt360Drag.hidden = true;
+      yt360Preview.hidden = false;
+      yt360Notice.hidden = false;
+      yt360Notice.textContent = mobile
+        ? "360° video is not available here in mobile browsers. Open it in the YouTube app to look around. The image below is a preview."
+        : "This browser does not support interactive 360° video here. Open it in YouTube or try a supported browser. The image below is a preview.";
+      [yt360Play, yt360Reset, yt360ZoomIn, yt360ZoomOut, yt360Fullscreen].forEach(button => { button.hidden = true; });
+      yt360Note.hidden = true;
+      yt360Status.hidden = true;
+      yt360Badge.textContent = "360° · Preview";
+      if (yt360Ready && yt360Player.pauseVideo) yt360Player.pauseVideo();
+    }
 
     function clamp(value, min, max) {
       return Math.min(max, Math.max(min, value));
@@ -1368,13 +1432,14 @@
       [yt360Reset, yt360ZoomIn, yt360ZoomOut].forEach(button => {
         button.disabled = !yt360Supported;
       });
-      if (!yt360Supported) {
-        stop360Drag();
-        yt360Badge.textContent = "360° · Open in YouTube";
-        yt360Status.textContent = "For interactive 360°, open in YouTube";
-        yt360Note.textContent = "This browser has not enabled interactive 360° playback. You can still play the video here, or select Open 360° in YouTube to look around.";
-        return false;
-      }
+      if (!yt360Supported) return false;
+
+      clearTimeout(yt360LoadTimer);
+      yt360Preview.hidden = true;
+      yt360Notice.hidden = true;
+      yt360Note.hidden = false;
+      yt360Status.hidden = false;
+      [yt360Play, yt360Reset, yt360ZoomIn, yt360ZoomOut, yt360Fullscreen].forEach(button => { button.hidden = false; });
 
       // Disable mobile orientation before applying manual drag and zoom.
       yt360Player.setSphericalProperties({ enableOrientationSensor: false });
@@ -1395,11 +1460,18 @@
       // The spherical renderer may only become available after playback starts.
       yt360SupportTimer = setInterval(() => {
         attempts += 1;
-        if (refresh360Status() || attempts >= 15) clearInterval(yt360SupportTimer);
+        if (refresh360Status()) {
+          clearInterval(yt360SupportTimer);
+        } else if (attempts >= 15) {
+          clearInterval(yt360SupportTimer);
+          clearTimeout(yt360LoadTimer);
+          show360Fallback();
+        }
       }, 1000);
     }
 
     window.onYouTubeIframeAPIReady = function () {
+      if (yt360Mobile) return;
       yt360Player = new YT.Player("yt360Player", {
         videoId: "f-ts9TR59qU",
         width: "100%",
@@ -1413,6 +1485,7 @@
         events: {
           onReady: function (event) {
             yt360Ready = true;
+            clearTimeout(yt360LoadTimer);
             check360Support();
           },
           onStateChange: function (event) {
@@ -1429,19 +1502,26 @@
           },
           onError: function () {
             clearInterval(yt360SupportTimer);
-            yt360Supported = false;
-            yt360Drag.hidden = true;
-            [yt360Reset, yt360ZoomIn, yt360ZoomOut].forEach(button => { button.disabled = true; });
-            yt360Status.textContent = "Player error — open on YouTube";
+            clearTimeout(yt360LoadTimer);
+            show360Fallback();
           }
         }
       });
     };
 
-    const yt360Api = document.createElement("script");
-    yt360Api.src = "https://www.youtube.com/iframe_api";
-    yt360Api.async = true;
-    document.head.appendChild(yt360Api);
+    if (yt360Mobile) {
+      show360Fallback(true);
+    } else {
+      const yt360Api = document.createElement("script");
+      yt360Api.src = "https://www.youtube.com/iframe_api";
+      yt360Api.async = true;
+      yt360Api.onerror = () => {
+        clearTimeout(yt360LoadTimer);
+        show360Fallback();
+      };
+      document.head.appendChild(yt360Api);
+      yt360LoadTimer = setTimeout(() => show360Fallback(), 20000);
+    }
 
     yt360Drag.addEventListener("pointerdown", event => {
       if (!yt360Ready || !yt360Supported || yt360Dragging || (event.pointerType === "mouse" && event.button !== 0)) return;

@@ -506,6 +506,53 @@
       margin-left: auto;
     }
 
+
+    .photo-360-section {
+      grid-column: 1 / -1;
+      margin-top: 12px;
+    }
+
+    .photo-360-section h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .photo-360-section p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .photo-360-embed {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .photo-360-embed iframe {
+      display: block;
+      width: 100%;
+      height: 437px;
+      border: 0;
+    }
+
+    .photo-360-link {
+      display: block;
+      margin-top: 14px;
+      color: var(--cyan);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    @media (max-width: 560px) {
+      .photo-360-embed iframe {
+        height: 540px;
+      }
+    }
+
     .social-section {
       background: #f4f8f9;
       color: #071c2e;
@@ -991,6 +1038,26 @@
         <div class="video-360-note">
           Drag anywhere on the video to look around. You can also use the arrow keys or zoom controls.
         </div>
+
+        <div class="photo-360-section">
+          <h3>Lauterbrunnen, Switzerland · 360° photo</h3>
+          <p>Click the photo, then drag or swipe to look around.</p>
+          <div class="photo-360-embed">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Froamview360%2Fposts%2Fpfbid033W7VRnbzK49AzVfZY89mjKBMXaPvGRY2nCYy3UaTShj99dwaRpJ7B4mA6AehctEjl&amp;show_text=true&amp;width=500"
+              width="500"
+              height="437"
+              title="RoamView 360 interactive photo of Lauterbrunnen, Switzerland"
+              loading="lazy"
+              style="border:none;overflow:hidden"
+              scrolling="no"
+              allowfullscreen
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          <a class="photo-360-link" href="https://www.facebook.com/roamview360/posts/pfbid033W7VRnbzK49AzVfZY89mjKBMXaPvGRY2nCYy3UaTShj99dwaRpJ7B4mA6AehctEjl" target="_blank" rel="noopener noreferrer">View photo on Facebook ↗</a>
+        </div>
+
       </div>
     </section>
 

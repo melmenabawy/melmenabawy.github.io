@@ -417,18 +417,93 @@
       aspect-ratio: 16 / 9;
     }
 
-    .video-360-wrap iframe {
+    .video-360-player {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-360-player iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
     }
 
+    .video-360-drag {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      background: transparent;
+    }
+
+    .video-360-drag.dragging {
+      cursor: grabbing;
+    }
+
+    .video-360-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 5;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(3,21,34,0.78);
+      color: #9aeaf1;
+      border: 1px solid rgba(154,234,241,0.34);
+      font-size: 0.82rem;
+      font-weight: 800;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .video-360-controls {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: -28px;
+    }
+
+    .video-360-control {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      min-height: 42px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .video-360-control:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    .video-360-control.primary {
+      background: var(--cyan);
+      color: var(--navy);
+      border-color: transparent;
+    }
+
     .video-360-note {
       grid-column: 1 / -1;
-      margin-top: -28px;
+      margin-top: 0;
       color: #b7ccd8;
       font-size: 0.92rem;
+    }
+
+    .video-360-status {
+      color: #9aeaf1;
+      font-size: 0.86rem;
+      margin-left: auto;
     }
 
     .social-section {
@@ -890,18 +965,31 @@
           <div class="orbit"><span>360°</span></div>
         </div>
 
-        <div class="video-360-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/f-ts9TR59qU?rel=0"
-            title="RoamView 360 interactive 360° travel video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+        <div class="video-360-wrap" aria-label="Interactive 360° YouTube video">
+          <div class="video-360-player">
+            <div id="yt360Player"></div>
+            <div
+              class="video-360-drag"
+              id="yt360Drag"
+              role="application"
+              tabindex="0"
+              aria-label="Drag to look around the 360 degree video. Use arrow keys to change view."
+            ></div>
+            <div class="video-360-badge">360° · Drag to look around</div>
+          </div>
+        </div>
+
+        <div class="video-360-controls" aria-label="360 video controls">
+          <button class="video-360-control primary" id="yt360Play" type="button">Play</button>
+          <button class="video-360-control" id="yt360Reset" type="button">Reset view</button>
+          <button class="video-360-control" id="yt360ZoomIn" type="button">Zoom in</button>
+          <button class="video-360-control" id="yt360ZoomOut" type="button">Zoom out</button>
+          <button class="video-360-control" id="yt360Fullscreen" type="button">Full screen</button>
+          <span class="video-360-status" id="yt360Status">Loading 360° player…</span>
         </div>
 
         <div class="video-360-note">
-          Drag the video to look around in 360°. On supported phones, move the device to explore the view.
+          Drag anywhere on the video to look around. You can also use the arrow keys or zoom controls.
         </div>
       </div>
     </section>
@@ -1067,6 +1155,192 @@
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open navigation menu");
       });
+    });
+
+    // Interactive YouTube 360° player.
+    let yt360Player;
+    let yt360Ready = false;
+    let yt360View = { yaw: 0, pitch: 0, roll: 0, fov: 100 };
+    let yt360Dragging = false;
+    let yt360LastX = 0;
+    let yt360LastY = 0;
+
+    const yt360Drag = document.getElementById("yt360Drag");
+    const yt360Play = document.getElementById("yt360Play");
+    const yt360Reset = document.getElementById("yt360Reset");
+    const yt360ZoomIn = document.getElementById("yt360ZoomIn");
+    const yt360ZoomOut = document.getElementById("yt360ZoomOut");
+    const yt360Fullscreen = document.getElementById("yt360Fullscreen");
+    const yt360Status = document.getElementById("yt360Status");
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function normalizeYaw(value) {
+      return ((value % 360) + 360) % 360;
+    }
+
+    function apply360View() {
+      if (!yt360Ready || !yt360Player || !yt360Player.setSphericalProperties) return;
+
+      yt360Player.setSphericalProperties({
+        yaw: normalizeYaw(yt360View.yaw),
+        pitch: clamp(yt360View.pitch, -90, 90),
+        roll: 0,
+        fov: clamp(yt360View.fov, 30, 120),
+        enableOrientationSensor: false
+      });
+    }
+
+    function refresh360Status() {
+      if (!yt360Ready || !yt360Player || !yt360Player.getSphericalProperties) return;
+      const props = yt360Player.getSphericalProperties();
+
+      if (!props || Object.keys(props).length === 0) {
+        yt360Status.textContent = "360° controls unavailable in this browser";
+        return;
+      }
+
+      yt360View.yaw = Number.isFinite(props.yaw) ? props.yaw : yt360View.yaw;
+      yt360View.pitch = Number.isFinite(props.pitch) ? props.pitch : yt360View.pitch;
+      yt360View.fov = Number.isFinite(props.fov) ? props.fov : yt360View.fov;
+      yt360Status.textContent = "Interactive 360° ready";
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      yt360Player = new YT.Player("yt360Player", {
+        videoId: "f-ts9TR59qU",
+        width: "100%",
+        height: "100%",
+        playerVars: {
+          rel: 0,
+          playsinline: 1,
+          enablejsapi: 1,
+          origin: window.location.origin
+        },
+        events: {
+          onReady: function (event) {
+            yt360Ready = true;
+            apply360View();
+            setTimeout(refresh360Status, 700);
+          },
+          onStateChange: function (event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+              yt360Play.textContent = "Pause";
+              refresh360Status();
+            } else if (
+              event.data === YT.PlayerState.PAUSED ||
+              event.data === YT.PlayerState.ENDED ||
+              event.data === YT.PlayerState.CUED
+            ) {
+              yt360Play.textContent = "Play";
+            }
+          },
+          onError: function () {
+            yt360Status.textContent = "Player error — open on YouTube";
+          }
+        }
+      });
+    };
+
+    const yt360Api = document.createElement("script");
+    yt360Api.src = "https://www.youtube.com/iframe_api";
+    yt360Api.async = true;
+    document.head.appendChild(yt360Api);
+
+    yt360Drag.addEventListener("pointerdown", event => {
+      if (!yt360Ready) return;
+      yt360Dragging = true;
+      yt360LastX = event.clientX;
+      yt360LastY = event.clientY;
+      yt360Drag.classList.add("dragging");
+      yt360Drag.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    yt360Drag.addEventListener("pointermove", event => {
+      if (!yt360Dragging || !yt360Ready) return;
+
+      const dx = event.clientX - yt360LastX;
+      const dy = event.clientY - yt360LastY;
+      yt360LastX = event.clientX;
+      yt360LastY = event.clientY;
+
+      const sensitivity = yt360View.fov / 550;
+      yt360View.yaw -= dx * sensitivity;
+      yt360View.pitch -= dy * sensitivity;
+      apply360View();
+      event.preventDefault();
+    });
+
+    function stop360Drag(event) {
+      if (!yt360Dragging) return;
+      yt360Dragging = false;
+      yt360Drag.classList.remove("dragging");
+      if (event && yt360Drag.hasPointerCapture(event.pointerId)) {
+        yt360Drag.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    yt360Drag.addEventListener("pointerup", stop360Drag);
+    yt360Drag.addEventListener("pointercancel", stop360Drag);
+
+    yt360Drag.addEventListener("wheel", event => {
+      if (!yt360Ready) return;
+      yt360View.fov = clamp(yt360View.fov + (event.deltaY > 0 ? 5 : -5), 30, 120);
+      apply360View();
+      event.preventDefault();
+    }, { passive: false });
+
+    yt360Drag.addEventListener("keydown", event => {
+      if (!yt360Ready) return;
+
+      const step = 8;
+      if (event.key === "ArrowLeft") yt360View.yaw -= step;
+      else if (event.key === "ArrowRight") yt360View.yaw += step;
+      else if (event.key === "ArrowUp") yt360View.pitch += step;
+      else if (event.key === "ArrowDown") yt360View.pitch -= step;
+      else if (event.key === "+" || event.key === "=") yt360View.fov -= 5;
+      else if (event.key === "-") yt360View.fov += 5;
+      else return;
+
+      apply360View();
+      event.preventDefault();
+    });
+
+    yt360Play.addEventListener("click", () => {
+      if (!yt360Ready) return;
+      const state = yt360Player.getPlayerState();
+      if (state === YT.PlayerState.PLAYING) yt360Player.pauseVideo();
+      else yt360Player.playVideo();
+    });
+
+    yt360Reset.addEventListener("click", () => {
+      yt360View = { yaw: 0, pitch: 0, roll: 0, fov: 100 };
+      apply360View();
+      yt360Drag.focus();
+    });
+
+    yt360ZoomIn.addEventListener("click", () => {
+      yt360View.fov = clamp(yt360View.fov - 10, 30, 120);
+      apply360View();
+    });
+
+    yt360ZoomOut.addEventListener("click", () => {
+      yt360View.fov = clamp(yt360View.fov + 10, 30, 120);
+      apply360View();
+    });
+
+    yt360Fullscreen.addEventListener("click", async () => {
+      if (!yt360Ready) return;
+      const iframe = yt360Player.getIframe();
+      try {
+        if (iframe.requestFullscreen) await iframe.requestFullscreen();
+        else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+      } catch (_) {
+        window.open("https://www.youtube.com/watch?v=f-ts9TR59qU", "_blank", "noopener");
+      }
     });
   </script>
 

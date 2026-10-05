@@ -442,6 +442,60 @@
       background: transparent;
     }
 
+    .video-360-drag[hidden] {
+      display: none;
+    }
+
+    .video-360-control:disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .video-360-stage {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 24px;
+    }
+
+    .video-360-stage:fullscreen,
+    .video-360-stage:-webkit-full-screen {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 12px;
+      background: #031522;
+      overflow: auto;
+    }
+
+    .video-360-stage:fullscreen .video-360-wrap,
+    .video-360-stage:-webkit-full-screen .video-360-wrap {
+      flex: 1;
+      min-height: 200px;
+      aspect-ratio: auto;
+      margin-top: 0;
+    }
+
+    .video-360-stage:fullscreen .video-360-controls,
+    .video-360-stage:-webkit-full-screen .video-360-controls {
+      margin-top: 0;
+    }
+
+    @media (max-width: 560px) {
+      .video-360-wrap {
+        min-height: 220px;
+      }
+
+      .video-360-controls {
+        margin-top: 0;
+      }
+
+      .video-360-status {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
     .video-360-drag.dragging {
       cursor: grabbing;
     }
@@ -507,8 +561,15 @@
     }
 
 
-    .photo-360-section {
+    .photo-360-grid {
       grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .photo-360-section {
+      min-width: 0;
       margin-top: 12px;
     }
 
@@ -545,6 +606,12 @@
       color: var(--cyan);
       text-align: center;
       font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+      .photo-360-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 560px) {
@@ -1012,33 +1079,38 @@
           <div class="orbit"><span>360°</span></div>
         </div>
 
+        <div class="video-360-stage" id="yt360Stage">
         <div class="video-360-wrap" aria-label="Interactive 360° YouTube video">
           <div class="video-360-player">
             <div id="yt360Player"></div>
             <div
               class="video-360-drag"
               id="yt360Drag"
+              hidden
               role="application"
               tabindex="0"
               aria-label="Drag to look around the 360 degree video. Use arrow keys to change view."
             ></div>
-            <div class="video-360-badge">360° · Drag to look around</div>
+            <div class="video-360-badge" id="yt360Badge">360° video</div>
           </div>
         </div>
 
         <div class="video-360-controls" aria-label="360 video controls">
           <button class="video-360-control primary" id="yt360Play" type="button">Play</button>
-          <button class="video-360-control" id="yt360Reset" type="button">Reset view</button>
-          <button class="video-360-control" id="yt360ZoomIn" type="button">Zoom in</button>
-          <button class="video-360-control" id="yt360ZoomOut" type="button">Zoom out</button>
+          <button class="video-360-control" id="yt360Reset" type="button" disabled>Reset view</button>
+          <button class="video-360-control" id="yt360ZoomIn" type="button" disabled>Zoom in</button>
+          <button class="video-360-control" id="yt360ZoomOut" type="button" disabled>Zoom out</button>
           <button class="video-360-control" id="yt360Fullscreen" type="button">Full screen</button>
-          <span class="video-360-status" id="yt360Status">Loading 360° player…</span>
+          <a class="video-360-control" href="https://www.youtube.com/watch?v=f-ts9TR59qU" target="_blank" rel="noopener noreferrer">Open 360° in YouTube ↗</a>
+          <span class="video-360-status" role="status" id="yt360Status">Loading 360° player…</span>
         </div>
 
-        <div class="video-360-note">
-          Drag anywhere on the video to look around. You can also use the arrow keys or zoom controls.
+        <div class="video-360-note" id="yt360Note">
+          Play the video to check 360° support. For the best experience on mobile, open it in the YouTube app.
+        </div>
         </div>
 
+        <div class="photo-360-grid">
         <div class="photo-360-section">
           <h3>Lauterbrunnen, Switzerland · 360° photo</h3>
           <p>Click the photo, then drag or swipe to look around.</p>
@@ -1058,6 +1130,25 @@
           <a class="photo-360-link" href="https://www.facebook.com/roamview360/posts/pfbid033W7VRnbzK49AzVfZY89mjKBMXaPvGRY2nCYy3UaTShj99dwaRpJ7B4mA6AehctEjl" target="_blank" rel="noopener noreferrer">View photo on Facebook ↗</a>
         </div>
 
+        <div class="photo-360-section">
+          <h3>Seelisberg, Switzerland · 360° photo</h3>
+          <p>Click the photo, then drag or swipe to look around.</p>
+          <div class="photo-360-embed">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Froamview360%2Fposts%2Fpfbid0ghLpLmKd6gnS66iXbuejwFSv8xNhixRbYTycjfNsSHZEa9fEi69PfxjqGnxSzwtMl&amp;show_text=true&amp;width=500"
+              width="500"
+              height="437"
+              title="RoamView 360 interactive photo of Seelisberg, Switzerland"
+              loading="lazy"
+              style="border:none;overflow:hidden"
+              scrolling="no"
+              allowfullscreen
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+          <a class="photo-360-link" href="https://www.facebook.com/roamview360/posts/pfbid0ghLpLmKd6gnS66iXbuejwFSv8xNhixRbYTycjfNsSHZEa9fEi69PfxjqGnxSzwtMl" target="_blank" rel="noopener noreferrer">View photo on Facebook ↗</a>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -1227,6 +1318,9 @@
     // Interactive YouTube 360° player.
     let yt360Player;
     let yt360Ready = false;
+    let yt360Supported = false;
+    let yt360SupportTimer;
+    let yt360ActivePointer = null;
     let yt360View = { yaw: 0, pitch: 0, roll: 0, fov: 100 };
     let yt360Dragging = false;
     let yt360LastX = 0;
@@ -1239,6 +1333,9 @@
     const yt360ZoomOut = document.getElementById("yt360ZoomOut");
     const yt360Fullscreen = document.getElementById("yt360Fullscreen");
     const yt360Status = document.getElementById("yt360Status");
+    const yt360Badge = document.getElementById("yt360Badge");
+    const yt360Note = document.getElementById("yt360Note");
+    const yt360Stage = document.getElementById("yt360Stage");
 
     function clamp(value, min, max) {
       return Math.min(max, Math.max(min, value));
@@ -1249,7 +1346,7 @@
     }
 
     function apply360View() {
-      if (!yt360Ready || !yt360Player || !yt360Player.setSphericalProperties) return;
+      if (!yt360Ready || !yt360Supported || !yt360Player || !yt360Player.setSphericalProperties) return;
 
       yt360Player.setSphericalProperties({
         yaw: normalizeYaw(yt360View.yaw),
@@ -1261,18 +1358,45 @@
     }
 
     function refresh360Status() {
-      if (!yt360Ready || !yt360Player || !yt360Player.getSphericalProperties) return;
+      if (!yt360Ready || !yt360Player || !yt360Player.getSphericalProperties) return false;
       const props = yt360Player.getSphericalProperties();
+      const supported = props && Number.isFinite(props.fov);
 
-      if (!props || Object.keys(props).length === 0) {
-        yt360Status.textContent = "360° controls unavailable in this browser";
-        return;
+      yt360Supported = Boolean(supported);
+      yt360Drag.hidden = !yt360Supported;
+      yt360Drag.tabIndex = yt360Supported ? 0 : -1;
+      [yt360Reset, yt360ZoomIn, yt360ZoomOut].forEach(button => {
+        button.disabled = !yt360Supported;
+      });
+      if (!yt360Supported) {
+        stop360Drag();
+        yt360Badge.textContent = "360° · Open in YouTube";
+        yt360Status.textContent = "For interactive 360°, open in YouTube";
+        yt360Note.textContent = "This browser has not enabled interactive 360° playback. You can still play the video here, or select Open 360° in YouTube to look around.";
+        return false;
       }
 
+      // Disable mobile orientation before applying manual drag and zoom.
+      yt360Player.setSphericalProperties({ enableOrientationSensor: false });
       yt360View.yaw = Number.isFinite(props.yaw) ? props.yaw : yt360View.yaw;
       yt360View.pitch = Number.isFinite(props.pitch) ? props.pitch : yt360View.pitch;
-      yt360View.fov = Number.isFinite(props.fov) ? props.fov : yt360View.fov;
+      yt360View.fov = props.fov;
+      yt360Badge.textContent = "360° · Drag to look around";
       yt360Status.textContent = "Interactive 360° ready";
+      yt360Note.textContent = "Drag or swipe on the video to look around. You can also use the arrow keys or zoom controls.";
+      apply360View();
+      return true;
+    }
+
+    function check360Support() {
+      clearInterval(yt360SupportTimer);
+      let attempts = 0;
+      if (refresh360Status()) return;
+      // The spherical renderer may only become available after playback starts.
+      yt360SupportTimer = setInterval(() => {
+        attempts += 1;
+        if (refresh360Status() || attempts >= 15) clearInterval(yt360SupportTimer);
+      }, 1000);
     }
 
     window.onYouTubeIframeAPIReady = function () {
@@ -1289,13 +1413,12 @@
         events: {
           onReady: function (event) {
             yt360Ready = true;
-            apply360View();
-            setTimeout(refresh360Status, 700);
+            check360Support();
           },
           onStateChange: function (event) {
             if (event.data === YT.PlayerState.PLAYING) {
               yt360Play.textContent = "Pause";
-              refresh360Status();
+              check360Support();
             } else if (
               event.data === YT.PlayerState.PAUSED ||
               event.data === YT.PlayerState.ENDED ||
@@ -1305,6 +1428,10 @@
             }
           },
           onError: function () {
+            clearInterval(yt360SupportTimer);
+            yt360Supported = false;
+            yt360Drag.hidden = true;
+            [yt360Reset, yt360ZoomIn, yt360ZoomOut].forEach(button => { button.disabled = true; });
             yt360Status.textContent = "Player error — open on YouTube";
           }
         }
@@ -1317,7 +1444,8 @@
     document.head.appendChild(yt360Api);
 
     yt360Drag.addEventListener("pointerdown", event => {
-      if (!yt360Ready) return;
+      if (!yt360Ready || !yt360Supported || yt360Dragging || (event.pointerType === "mouse" && event.button !== 0)) return;
+      yt360ActivePointer = event.pointerId;
       yt360Dragging = true;
       yt360LastX = event.clientX;
       yt360LastY = event.clientY;
@@ -1327,7 +1455,7 @@
     });
 
     yt360Drag.addEventListener("pointermove", event => {
-      if (!yt360Dragging || !yt360Ready) return;
+      if (!yt360Dragging || !yt360Ready || !yt360Supported || event.pointerId !== yt360ActivePointer) return;
 
       const dx = event.clientX - yt360LastX;
       const dy = event.clientY - yt360LastY;
@@ -1342,26 +1470,28 @@
     });
 
     function stop360Drag(event) {
-      if (!yt360Dragging) return;
+      if (!yt360Dragging || (event && event.pointerId !== yt360ActivePointer)) return;
       yt360Dragging = false;
       yt360Drag.classList.remove("dragging");
-      if (event && yt360Drag.hasPointerCapture(event.pointerId)) {
-        yt360Drag.releasePointerCapture(event.pointerId);
+      if (yt360Drag.hasPointerCapture(yt360ActivePointer)) {
+        yt360Drag.releasePointerCapture(yt360ActivePointer);
       }
+      yt360ActivePointer = null;
     }
 
     yt360Drag.addEventListener("pointerup", stop360Drag);
     yt360Drag.addEventListener("pointercancel", stop360Drag);
+    yt360Drag.addEventListener("lostpointercapture", stop360Drag);
 
     yt360Drag.addEventListener("wheel", event => {
-      if (!yt360Ready) return;
+      if (!yt360Ready || !yt360Supported) return;
       yt360View.fov = clamp(yt360View.fov + (event.deltaY > 0 ? 5 : -5), 30, 120);
       apply360View();
       event.preventDefault();
     }, { passive: false });
 
     yt360Drag.addEventListener("keydown", event => {
-      if (!yt360Ready) return;
+      if (!yt360Ready || !yt360Supported) return;
 
       const step = 8;
       if (event.key === "ArrowLeft") yt360View.yaw -= step;
@@ -1400,15 +1530,29 @@
     });
 
     yt360Fullscreen.addEventListener("click", async () => {
-      if (!yt360Ready) return;
-      const iframe = yt360Player.getIframe();
       try {
-        if (iframe.requestFullscreen) await iframe.requestFullscreen();
-        else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          if (document.exitFullscreen) await document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        } else if (yt360Stage.requestFullscreen) {
+          await yt360Stage.requestFullscreen();
+        } else if (yt360Stage.webkitRequestFullscreen) {
+          yt360Stage.webkitRequestFullscreen();
+        } else {
+          window.location.href = "https://www.youtube.com/watch?v=f-ts9TR59qU";
+        }
       } catch (_) {
-        window.open("https://www.youtube.com/watch?v=f-ts9TR59qU", "_blank", "noopener");
+        window.location.href = "https://www.youtube.com/watch?v=f-ts9TR59qU";
       }
     });
+
+    function update360FullscreenLabel() {
+      yt360Fullscreen.textContent = (document.fullscreenElement || document.webkitFullscreenElement)
+        ? "Exit full screen" : "Full screen";
+    }
+    document.addEventListener("fullscreenchange", update360FullscreenLabel);
+    document.addEventListener("webkitfullscreenchange", update360FullscreenLabel);
+
   </script>
 
 </body>

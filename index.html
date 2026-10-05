@@ -11,14 +11,14 @@
   <meta property="og:description" content="Real travel footage, scenic short videos and immersive 360° experiences." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://roamview360.com/" />
-  <meta property="og:image" content="https://roamview360.com/hero.jpg" />
-  <meta property="og:image:width" content="1536" />
-  <meta property="og:image:height" content="864" />
+  <meta property="og:image" content="https://roamview360.com/roamview360/og-preview-v5.jpg" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="210" />
   <meta property="og:image:alt" content="RoamView 360 — Real places. Real experiences. A wider view." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="RoamView 360 | Real places. Real experiences." />
   <meta name="twitter:description" content="Real travel footage, scenic short videos and immersive 360° experiences." />
-  <meta name="twitter:image" content="https://roamview360.com/hero.jpg" />
+  <meta name="twitter:image" content="https://roamview360.com/roamview360/og-preview-v5.jpg" />
 
   <style>
     :root {
@@ -147,15 +147,15 @@
     }
 
     .hero {
-      min-height: 760px;
-      padding: 150px 0 100px;
+      min-height: 610px;
+      padding: 122px 0 70px;
       display: flex;
       align-items: center;
       position: relative;
       isolation: isolate;
       background:
-        linear-gradient(90deg, rgba(6,24,39,0.97), rgba(6,24,39,0.55), rgba(6,24,39,0.35)),
-        url("hero.jpg") center/cover no-repeat;
+        linear-gradient(90deg, rgba(6,24,39,0.96) 0%, rgba(6,24,39,0.82) 34%, rgba(6,24,39,0.42) 70%, rgba(6,24,39,0.22) 100%),
+        url("roamview360/og-preview-v5.jpg") center/cover no-repeat;
     }
 
     .hero::after {
@@ -168,7 +168,7 @@
     }
 
     .hero-content {
-      max-width: 680px;
+      max-width: 610px;
     }
 
     .eyebrow {
@@ -181,27 +181,36 @@
     }
 
     .hero-logo {
-      width: 150px;
-      height: 150px;
+      width: 112px;
+      height: 112px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid var(--cyan);
-      margin-bottom: 26px;
-      box-shadow: 0 0 35px rgba(0,217,255,0.35);
+      border: 2px solid #9aeaf1;
+      margin-bottom: 20px;
+      box-shadow: 0 0 22px rgba(0,217,255,0.20);
     }
 
     h1 {
-      font-size: clamp(2.8rem, 7vw, 6.6rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      margin-bottom: 24px;
+      max-width: 570px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.6rem, 4.2vw, 3.625rem);
+      font-weight: 600;
+      line-height: 1.13;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
     }
 
     .hero p {
-      max-width: 560px;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      margin-bottom: 32px;
+      max-width: 585px;
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.45;
+      margin-bottom: 28px;
     }
 
     .actions {
@@ -333,19 +342,68 @@
     }
 
     .wider-views {
-      background:
-        linear-gradient(100deg, rgba(0,20,36,0.97), rgba(0,20,36,0.55)),
-        url("hero.jpg") center/cover no-repeat;
+      background: linear-gradient(110deg, #05263b 0%, #06243a 62%, #0b3b4c 100%);
+      overflow: hidden;
+    }
+
+    .wider-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+      min-height: 300px;
     }
 
     .wider-box {
-      max-width: 700px;
+      max-width: 650px;
+    }
+
+    .wider-box h2 {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
     }
 
     .wider-box p {
-      color: var(--muted);
-      font-size: 1.12rem;
-      margin-bottom: 25px;
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.45;
+      margin-bottom: 26px;
+      max-width: 600px;
+    }
+
+    .orbit-wrap {
+      display: grid;
+      place-items: center;
+      min-height: 270px;
+    }
+
+    .orbit {
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(89,221,236,0.24);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .orbit::before {
+      content: "";
+      width: 190px;
+      height: 190px;
+      border: 1px solid rgba(89,221,236,0.58);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .orbit span {
+      position: relative;
+      z-index: 1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 4.3rem;
+      color: #9aeaf1;
+      letter-spacing: -0.04em;
     }
 
     .social-section {
@@ -365,10 +423,26 @@
       color: #496376;
     }
 
+    .social-section .section-heading {
+      max-width: 660px;
+      margin-bottom: 34px;
+    }
+
+    .social-section .section-heading h2 {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .social-section .section-heading p {
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
     .social-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
     }
 
     .social-card {
@@ -389,31 +463,59 @@
     }
 
     .social-card h3 {
-      margin: 15px 0 3px;
+      margin: 15px 0 5px;
       color: #071c2e;
+      font-size: 1.1875rem;
     }
 
     .social-card p {
       color: #496376;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      line-height: 1.35;
       margin-bottom: 16px;
     }
 
     .qr-wrap {
-      min-height: 205px;
+      min-height: 195px;
       display: grid;
       place-items: center;
       background: #ffffff;
       border-radius: 16px;
-      padding: 12px;
+      padding: 10px;
+      position: relative;
     }
 
     .qr-image {
-      width: 180px;
-      height: 180px;
+      width: 170px;
+      height: 170px;
       max-width: 100%;
       object-fit: contain;
       display: block;
+    }
+
+    .qr-badge {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      box-shadow: 0 0 0 5px #ffffff;
+      overflow: hidden;
+    }
+
+    .qr-badge img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .qr-badge.snapchat {
+      background: #fffc00;
     }
 
     .social-button {
@@ -423,7 +525,7 @@
       background: #e3f7f8;
       color: #075668;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .site-footer {
@@ -471,6 +573,12 @@
       flex-wrap: wrap;
     }
 
+    @media (max-width: 1120px) {
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     @media (max-width: 900px) {
       .nav-links {
         position: absolute;
@@ -507,6 +615,14 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .wider-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .orbit-wrap {
+        min-height: 220px;
+      }
+
       .social-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -518,13 +634,31 @@
       }
 
       .hero {
-        min-height: 700px;
-        padding-top: 125px;
+        min-height: 640px;
+        padding-top: 115px;
       }
 
       .hero-logo {
-        width: 112px;
-        height: 112px;
+        width: 96px;
+        height: 96px;
+      }
+
+      h1 {
+        font-size: 2.55rem;
+      }
+
+      .orbit {
+        width: 220px;
+        height: 220px;
+      }
+
+      .orbit::before {
+        width: 160px;
+        height: 160px;
+      }
+
+      .orbit span {
+        font-size: 3.6rem;
       }
 
       .feature-grid,
@@ -581,7 +715,7 @@
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
-          <div class="eyebrow">Travel from a wider view</div>
+          <div class="eyebrow">See beyond the postcard</div>
 
           <img
             class="hero-logo"
@@ -589,11 +723,11 @@
             alt="RoamView 360 circular travel logo"
           />
 
-          <h1>Real places.<br />Real experiences.<br />A wider view.</h1>
+          <h1>Real places. Real<br />experiences. A wider<br />view.</h1>
 
           <p>
-            Discover scenic destinations, useful travel information,
-            real footage and immersive 360° experiences from around the world.
+            Step into real travel footage, scenic shorts and immersive 360° views.<br />
+            Explore the world as it feels, one view at a time.
           </p>
 
           <div class="actions">
@@ -603,11 +737,11 @@
 
             <a
               class="button button-secondary"
-              href="https://www.youtube.com/@roamview.360?sub_confirmation=1"
+              href="https://www.youtube.com/@roamview.360"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Subscribe on YouTube
+              Watch the latest views ↗
             </a>
           </div>
         </div>
@@ -708,23 +842,27 @@
     </section>
 
     <section class="wider-views">
-      <div class="container">
+      <div class="container wider-grid">
         <div class="wider-box">
-          <div class="eyebrow">Wider views</div>
-          <h2>Experience the journey from every angle.</h2>
+          <div class="eyebrow">Immersive by nature</div>
+          <h2>Wider views. Closer to being there.</h2>
           <p>
-            Explore immersive travel footage and 360° views designed to help
-            you feel closer to the places you want to visit.
+            Explore immersive 360° travel experiences that let you look around, linger and
+            find your own perspective.
           </p>
 
           <a
             class="button button-primary"
-            href="https://www.youtube.com/@roamview.360?sub_confirmation=1"
+            href="https://www.youtube.com/@roamview.360"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Watch on YouTube
+            Watch 360° experiences ↗
           </a>
+        </div>
+
+        <div class="orbit-wrap" aria-hidden="true">
+          <div class="orbit"><span>360°</span></div>
         </div>
       </div>
     </section>
@@ -750,6 +888,7 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.youtube.com%2F%40roamview.360%3Fsub_confirmation%3D1&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to subscribe to RoamView 360 on YouTube" loading="lazy" />
+              <span class="qr-badge"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="" /></span>
             </div>
             <h3>YouTube</h3>
             <p>360° videos, scenic Shorts and destination views.</p>
@@ -765,6 +904,7 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.instagram.com%2Froamview360%2F&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on Instagram" loading="lazy" />
+              <span class="qr-badge"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" /></span>
             </div>
             <h3>Instagram</h3>
             <p>Reels, photos and moments from real trips.</p>
@@ -780,6 +920,7 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.facebook.com%2Froamview360&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on Facebook" loading="lazy" />
+              <span class="qr-badge"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="" /></span>
             </div>
             <h3>Facebook</h3>
             <p>Travel videos, scenic posts and 360° content.</p>
@@ -795,9 +936,26 @@
           >
             <div class="qr-wrap">
               <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.tiktok.com%2F%40roamview360travel&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on TikTok" loading="lazy" />
+              <span class="qr-badge"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="" /></span>
             </div>
             <h3>TikTok</h3>
             <p>Quick travel stories and scenic reveals.</p>
+            <span class="social-button">Follow ↗</span>
+          </a>
+
+          <a
+            class="social-card"
+            href="https://www.snapchat.com/add/roamview360"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow RoamView 360 on Snapchat"
+          >
+            <div class="qr-wrap">
+              <img class="qr-image" src="https://quickchart.io/qr?text=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Froamview360&size=360&margin=4&ecLevel=H&dark=071c2e&light=ffffff" alt="QR code to follow RoamView 360 on Snapchat" loading="lazy" />
+              <span class="qr-badge snapchat"><img src="https://cdn.simpleicons.org/snapchat/000000" alt="" /></span>
+            </div>
+            <h3>Snapchat</h3>
+            <p>Travel stories and real trip moments.</p>
             <span class="social-button">Follow ↗</span>
           </a>
 
@@ -838,6 +996,7 @@
             <a href="https://www.instagram.com/roamview360/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.facebook.com/roamview360" target="_blank" rel="noopener noreferrer">Facebook</a>
             <a href="https://www.tiktok.com/@roamview360travel" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a href="https://www.snapchat.com/add/roamview360" target="_blank" rel="noopener noreferrer">Snapchat</a>
             <a href="https://roamview360.com" target="_blank" rel="noopener noreferrer">roamview360.com</a>
           </div>
         </div>

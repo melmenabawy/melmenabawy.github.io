@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RoamView 360 | Real places. Real experiences.</title>
-  <meta name="description" content="RoamView 360 — real travel footage, scenic short videos, destination information and immersive 360° experiences." />
+  <meta name="description" content="RoamView 360 — real travel footage, scenic short videos and immersive 360° experiences." />
   <link rel="canonical" href="https://roamview360.com/" />
   <link rel="icon" href="/logo.jpg" />
   <meta property="og:title" content="RoamView 360 | Real places. Real experiences." />
@@ -452,7 +452,7 @@
     /* Feature cards */
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -1370,12 +1370,8 @@
 
       <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
         <a href="#home">Home</a>
-        <a href="#destinations">Destinations</a>
-        <a href="#hotels">Hotels</a>
-        <a href="#transport">Transport</a>
-        <a href="#tips">Travel Tips</a>
         <a href="#experiences">360° Experiences</a>
-        <a href="#socials" class="nav-cta">Explore more</a>
+        <a href="#socials" class="nav-cta">Follow</a>
       </nav>
     </div>
   </header>
@@ -1394,8 +1390,8 @@
           </p>
 
           <div class="actions">
-            <a class="button button-primary" href="#destinations">
-              Explore destinations
+            <a class="button button-primary" href="#experiences">
+              Look around in 360°
             </a>
 
             <a
@@ -1436,8 +1432,7 @@
 
           <p class="intro-copy">
             RoamView 360 is a faceless travel brand sharing real travel footage,
-            scenic short videos, destination information, hotels, transport,
-            practical travel tips and immersive 360° experiences.
+            scenic short videos and immersive 360° experiences.
           </p>
         </div>
 
@@ -1451,62 +1446,18 @@
       </div>
     </section>
 
-    <section id="destinations">
+    <section>
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow">Explore the journey</div>
-          <h2>Travel information, brought to life.</h2>
+          <h2>Two ways to explore.</h2>
           <p>
-            Find visual inspiration and practical ideas for your next adventure.
+            Look around real places in 360°, or watch quick scenic shorts.
           </p>
         </div>
 
         <div class="feature-grid">
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.6 2.5 4 5.6 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.6-4-9s1.4-6.5 4-9z" /></svg>
-            </div>
-            <div class="feature-body">
-              <h3>Destinations</h3>
-              <p>Discover scenic places, city highlights and memorable routes.</p>
-            </div>
-            <a class="card-link" href="#destinations">Explore places →</a>
-          </article>
-
-          <article class="feature-card" id="hotels">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M3 18v2M21 18v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" /></svg>
-            </div>
-            <div class="feature-body">
-              <h3>Hotels</h3>
-              <p>See accommodation ideas and stay experiences from around the world.</p>
-            </div>
-            <a class="card-link" href="#hotels">View stays →</a>
-          </article>
-
-          <article class="feature-card" id="transport">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="14" rx="3" /><path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4M9 14h.01M15 14h.01" /></svg>
-            </div>
-            <div class="feature-body">
-              <h3>Transport</h3>
-              <p>Explore the ways travelers move through destinations.</p>
-            </div>
-            <a class="card-link" href="#transport">Find routes →</a>
-          </article>
-
-          <article class="feature-card" id="tips">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M15.5 8.5l-2 5-5 2 2-5z" /></svg>
-            </div>
-            <div class="feature-body">
-              <h3>Travel Tips</h3>
-              <p>Practical ideas to help you plan more confidently.</p>
-            </div>
-            <a class="card-link" href="#tips">Get tips →</a>
-          </article>
-
-          <article class="feature-card" id="experiences">
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-18 12 12)" /></svg>
             </div>
@@ -1531,7 +1482,7 @@
       </div>
     </section>
 
-    <section class="wider-views">
+    <section class="wider-views" id="experiences">
       <div class="container">
         <div class="wider-head">
           <div class="wider-box">
@@ -1791,11 +1742,9 @@
         <div>
           <div class="footer-title">Explore</div>
           <div class="footer-links">
-            <a href="#destinations">Destinations</a>
-            <a href="#hotels">Hotels</a>
-            <a href="#transport">Transport</a>
-            <a href="#tips">Travel Tips</a>
+            <a href="#home">Home</a>
             <a href="#experiences">360° Experiences</a>
+            <a href="#socials">Follow</a>
           </div>
         </div>
 

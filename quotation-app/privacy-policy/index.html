@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — Quotation Manager</title>
-<meta name="description" content="Privacy Policy for the Quotation Manager iOS app.">
+<title>Privacy Policy — Quotara</title>
+<meta name="description" content="Privacy Policy for the Quotara iOS app.">
 <style>
   :root {
     color-scheme: light dark;
@@ -80,93 +80,102 @@
 <main>
   <div class="lang active" id="en">
     <h1>Privacy Policy</h1>
-    <p class="subtitle">Quotation Manager · Effective date: August 7, 2026</p>
+    <p class="subtitle">Quotara · Effective date: October 14, 2026</p>
 
     <section>
       <h2>1. Information Stored in the App</h2>
-      <p>Quotation Manager stores the business information you enter directly into the app, including company details you create (name, contact information, addresses, logo, tax settings), customer details (names, contacts, addresses), contacts and addresses associated with your companies and customers, quotation information (line items, pricing, quantities, taxes, discounts, and notes), catalog and price-list data you configure, and app preferences and settings.</p>
+      <p>Quotara stores the business information you enter in the app on your device. This includes companies, customers, contacts, addresses, quotations, invoices, credit notes, payments, delivery and return records, catalog data, preferences, and attachments you choose to add. Normal-user business-data synchronization is not enabled in version 1.2.</p>
     </section>
 
     <section>
-      <h2>2. Local Storage</h2>
-      <p>All of this information is stored locally on your device by the app. Quotation Manager does not transmit this information to, or store it on, any servers operated by the developer. The developer has no ability to view, access, or retrieve your business data.</p>
+      <h2>2. Local Storage and Backups</h2>
+      <p>Quotara does not operate a developer-hosted account or document store for these records. iOS or iPadOS may include the app’s local container in an operating-system-managed device backup according to your device and Apple ID settings. Those backups are controlled by Apple and your device settings, not by a Quotara server. Quotara cannot inspect or retrieve those backups.</p>
+      <p>Quotara’s encrypted backup is a user-initiated app export protected by the passphrase you choose. It is separate from Complete Data Export, which creates a readable offline ZIP. Safety copies and migration-recovery copies may remain wherever they were created until removed through the relevant system or storage provider.</p>
     </section>
 
     <section>
-      <h2>3. PDF Generation and Sharing</h2>
-      <p>Quotation Manager generates PDF quotation documents locally on your device. Sharing or exporting a PDF only happens when you choose to share it, using the standard iOS share sheet. Once you share a PDF with another app, service, or contact, that recipient handles the file under its own privacy practices, which are not covered by this policy.</p>
+      <h2>3. PDFs, Attachments and Sharing</h2>
+      <p>Complete Data Export includes PDFs regenerated from stored document facts when the document is issued and renderable. These files are explicitly marked as “regenerated” in <code>records/document-index.csv</code>; they are not claimed to be original issued PDF snapshots. Drafts remain structured records only. If rendering is unavailable or fails, the export reports that outcome instead of inventing a PDF. Unsupported document PDF types are disclosed in the export.</p>
+      <p>If you choose a contact, photo or file through Apple’s Contacts, Photos, or Files interface, Quotara imports only the values or file you select and stores the imported data locally for the selected record. Sharing or exporting a PDF or readable data export occurs only when you choose a destination through Apple’s share interface. The receiving app, service or storage provider then handles the shared copy under its own policies.</p>
     </section>
 
     <section>
       <h2>4. Purchases and Subscriptions</h2>
-      <p>Quotation Manager Pro is offered as an auto-renewable subscription, purchased and managed entirely through Apple's App Store using StoreKit. Purchases are processed by Apple; the developer does not receive your full payment card details. Apple may process your purchase, account, and subscription information under Apple's own privacy policy. The app receives only the subscription status and entitlement information needed to unlock Pro features.</p>
-      <p>Because subscriptions are managed by Apple, your Quotation Manager Pro entitlement can be restored on another device signed in with the same Apple ID, using the in-app Restore Purchases option. This entitlement restoration is separate from your business data; your companies, customers, and quotations are not synced between devices by Quotation Manager.</p>
+      <p>Quotara Pro is offered as an auto-renewable subscription, purchased and managed entirely through Apple’s App Store using StoreKit. Quotara accesses product metadata, entitlement and transaction status, subscription status, introductory-offer eligibility and transaction updates needed to gate subscription features. Apple processes payment, account and subscription information under Apple’s terms and privacy policy. Quotara does not receive full payment-card details.</p>
+      <p>Your Quotara Pro entitlement can be restored on another device signed in with the same Apple ID using the in-app Restore Purchases option. This entitlement restoration is separate from your business data; Quotara does not sync companies, customers or documents between devices.</p>
     </section>
 
     <section>
-      <h2>5. Tracking, Analytics, and Advertising</h2>
-      <p>Quotation Manager does not show advertising, does not track you across other companies' apps or websites, and does not currently use any analytics or telemetry SDK. The app does not sell your personal data.</p>
+      <h2>5. Network Requests, Tracking and Advertising</h2>
+      <p>When checking for an available update, Quotara may request public App Store metadata from Apple using app ID 6802686864. The request contains the app identifier and standard network information handled by Apple; it does not include Quotara business records, contacts, attachments or account credentials.</p>
+      <p>Quotara does not show advertising, does not track you across other companies’ apps or websites, and does not currently use an analytics or telemetry SDK. The app does not sell your personal data.</p>
     </section>
 
     <section>
-      <h2>6. Backups</h2>
-      <p>Because your business data is stored locally by the app, it may be included in backups you make of your device — for example, an iCloud device backup or a local computer backup — depending on your own iOS/iPadOS and Apple ID settings. This backup behavior is controlled by Apple and your device configuration, not by any developer-operated cloud synchronization service. Quotation Manager itself does not sync your business data between devices.</p>
+      <h2>6. Data Retention and Deletion</h2>
+      <p>Records and attachments are deleted from the active app store through supported app actions. Safety copies, migration-recovery copies, device backups and exported files may remain wherever they were created until removed through the relevant system or storage provider. Quotara does not promise immediate permanent erasure from every copy. Uninstalling the app may remove locally stored data from the device, subject to Apple’s backup and restore behavior.</p>
     </section>
 
     <section>
-      <h2>7. Data Retention and Deletion</h2>
-      <p>Your business data remains stored locally until you delete it yourself within the app, remove it through app functionality, or erase your device or its storage. Uninstalling the app may remove its locally stored data from your device, subject to Apple's own backup and restore behavior.</p>
+      <h2>7. Tax and Legal Responsibility</h2>
+      <p>Quotara generates business documents from the information and settings you provide. You are responsible for the accuracy of entered business and tax information and for determining whether generated documents meet the legal, tax, recordkeeping or e-invoicing requirements that apply to you. Quotara does not provide legal or tax advice.</p>
     </section>
 
     <section>
-      <h2>8. Children's Privacy</h2>
-      <p>Quotation Manager is a general-purpose business tool intended for business owners and professionals, and it is not directed to children. We do not knowingly collect information from children, and the app is not intended for use by children.</p>
+      <h2>8. Children’s Privacy</h2>
+      <p>Quotara is a general-purpose business tool intended for business owners and professionals, and it is not directed to children. We do not knowingly collect information from children, and the app is not intended for use by children.</p>
     </section>
 
     <section>
       <h2>9. Changes to This Policy</h2>
-      <p>We may update this Privacy Policy as the app evolves. Material changes will be reflected by an updated effective date above, and continued use of the app after an update constitutes acceptance of the revised policy. Within the app, an updated legal document may require your acceptance again before continued use.</p>
+      <p>We may update this Privacy Policy as the app evolves. Material changes will be reflected by an updated effective date above, and an updated legal document may require your acceptance again before continued use.</p>
     </section>
 
     <section>
       <h2>10. Contact</h2>
-      <p>You can reach the developer using the contact details provided on Quotation Manager's official App Store listing.</p>
+      <p>You can reach the developer using the contact details provided on Quotara’s official App Store listing.</p>
     </section>
+    <section>
+      <h2>11. Address Search and Apple Maps</h2>
+      <p>When you use address search, Quotara sends the text you type and requests for selected results to Apple Maps to obtain address suggestions and details. Apple processes these requests under its own privacy practices. This feature does not request access to your device location. You can enter an address manually instead. Opening an address in Maps is optional and shares that address with Apple Maps.</p>
+      <p><a href="https://www.apple.com/legal/privacy/data/en/apple-maps/">Apple Maps — Privacy</a></p>
+    </section>
+
   </div>
 
   <div class="lang" id="ar">
     <h1>سياسة الخصوصية</h1>
-    <p class="subtitle">Quotation Manager · تاريخ السريان: 7 أغسطس 2026</p>
+    <p class="subtitle">Quotara · تاريخ السريان: 5 سبتمبر 2026</p>
 
     <section>
       <h2>1. المعلومات التي يخزنها التطبيق</h2>
-      <p>يخزن Quotation Manager معلومات العمل التي تدخلها مباشرة في التطبيق، بما في ذلك بيانات الشركات التي تنشئها (الاسم، معلومات الاتصال، العناوين، الشعار، إعدادات الضرائب)، وبيانات العملاء (الأسماء، جهات الاتصال، العناوين)، وجهات الاتصال والعناوين المرتبطة بشركاتك وعملائك، ومعلومات عروض الأسعار (البنود والأسعار والكميات والضرائب والخصومات والملاحظات)، وبيانات الكتالوج وقوائم الأسعار التي تُعدّها، وتفضيلات التطبيق وإعداداته.</p>
+      <p>يخزن Quotara معلومات العمل التي تدخلها مباشرة في التطبيق، بما في ذلك بيانات الشركات التي تنشئها (الاسم، معلومات الاتصال، العناوين، الشعار، إعدادات الضرائب)، وبيانات العملاء (الأسماء، جهات الاتصال، العناوين)، وجهات الاتصال والعناوين المرتبطة بشركاتك وعملائك، ومعلومات عروض الأسعار (البنود والأسعار والكميات والضرائب والخصومات والملاحظات)، وبيانات الكتالوج وقوائم الأسعار التي تُعدّها، وتفضيلات التطبيق وإعداداته.</p>
     </section>
 
     <section>
       <h2>2. التخزين المحلي</h2>
-      <p>يتم تخزين جميع هذه المعلومات محليًا على جهازك بواسطة التطبيق. لا يرسل Quotation Manager هذه المعلومات إلى أي خوادم يديرها المطوّر ولا يخزنها عليها. لا يملك المطوّر أي قدرة على الاطلاع على بيانات عملك أو الوصول إليها أو استرجاعها.</p>
+      <p>يتم تخزين جميع هذه المعلومات محليًا على جهازك بواسطة التطبيق. لا يرسل Quotara هذه المعلومات إلى أي خوادم يديرها المطوّر ولا يخزنها عليها. لا يملك المطوّر أي قدرة على الاطلاع على بيانات عملك أو الوصول إليها أو استرجاعها.</p>
     </section>
 
     <section>
       <h2>3. إنشاء ملفات PDF ومشاركتها</h2>
-      <p>ينشئ Quotation Manager مستندات عروض الأسعار بصيغة PDF محليًا على جهازك. لا تتم مشاركة أو تصدير ملف PDF إلا عند اختيارك ذلك باستخدام واجهة المشاركة القياسية في iOS. وبمجرد مشاركة ملف PDF مع تطبيق أو خدمة أو جهة اتصال أخرى، تتولى تلك الجهة معالجة الملف وفق ممارسات الخصوصية الخاصة بها، وهو أمر لا تغطيه هذه السياسة.</p>
+      <p>ينشئ Quotara مستندات عروض الأسعار بصيغة PDF محليًا على جهازك. لا تتم مشاركة أو تصدير ملف PDF إلا عند اختيارك ذلك باستخدام واجهة المشاركة القياسية في iOS. وبمجرد مشاركة ملف PDF مع تطبيق أو خدمة أو جهة اتصال أخرى، تتولى تلك الجهة معالجة الملف وفق ممارسات الخصوصية الخاصة بها، وهو أمر لا تغطيه هذه السياسة.</p>
     </section>
 
     <section>
       <h2>4. المشتريات والاشتراكات</h2>
-      <p>يُطرح Quotation Manager Pro كاشتراك يتجدد تلقائيًا، ويتم شراؤه وإدارته بالكامل عبر App Store باستخدام StoreKit. تتولى Apple معالجة عمليات الشراء؛ ولا يتلقى المطوّر بيانات البطاقة بالكامل. قد تعالج Apple معلومات الشراء والحساب والاشتراك وفق سياسة الخصوصية الخاصة بها. ويتلقى التطبيق فقط معلومات حالة الاشتراك والأهلية اللازمة لإتاحة ميزات Pro.</p>
-      <p>ولأن الاشتراكات تديرها Apple، يمكن استعادة أهلية Quotation Manager Pro على جهاز آخر مسجّل بنفس معرف Apple باستخدام خيار استعادة المشتريات داخل التطبيق. هذا الاسترداد منفصل عن بيانات عملك؛ ولا تتم مزامنة شركاتك أو عملائك أو عروض الأسعار بين الأجهزة بواسطة Quotation Manager.</p>
+      <p>يُطرح Quotara Pro كاشتراك يتجدد تلقائيًا، ويتم شراؤه وإدارته بالكامل عبر App Store باستخدام StoreKit. تتولى Apple معالجة عمليات الشراء؛ ولا يتلقى المطوّر بيانات البطاقة بالكامل. قد تعالج Apple معلومات الشراء والحساب والاشتراك وفق سياسة الخصوصية الخاصة بها. ويتلقى التطبيق فقط معلومات حالة الاشتراك والأهلية اللازمة لإتاحة ميزات Pro.</p>
+      <p>ولأن الاشتراكات تديرها Apple، يمكن استعادة أهلية Quotara Pro على جهاز آخر مسجّل بنفس معرف Apple باستخدام خيار استعادة المشتريات داخل التطبيق. هذا الاسترداد منفصل عن بيانات عملك؛ ولا تتم مزامنة شركاتك أو عملائك أو عروض الأسعار بين الأجهزة بواسطة Quotara.</p>
     </section>
 
     <section>
       <h2>5. التتبع والتحليلات والإعلانات</h2>
-      <p>لا يعرض Quotation Manager إعلانات، ولا يتتبعك عبر تطبيقات أو مواقع شركات أخرى، ولا يستخدم حاليًا أي أداة تحليلات أو تتبع تقني. لا يبيع التطبيق بياناتك الشخصية.</p>
+      <p>لا يعرض Quotara إعلانات، ولا يتتبعك عبر تطبيقات أو مواقع شركات أخرى، ولا يستخدم حاليًا أي أداة تحليلات أو تتبع تقني. لا يبيع التطبيق بياناتك الشخصية.</p>
     </section>
 
     <section>
       <h2>6. النسخ الاحتياطي</h2>
-      <p>نظرًا لأن بيانات عملك تُخزّن محليًا بواسطة التطبيق، فقد تكون مشمولة ضمن النسخ الاحتياطية التي تنشئها لجهازك — مثل النسخة الاحتياطية على iCloud أو نسخة احتياطية على حاسوب — تبعًا لإعدادات iOS/iPadOS ومعرّف Apple الخاص بك. يخضع سلوك النسخ الاحتياطي هذا لتحكم Apple وإعدادات جهازك، وليس لأي خدمة مزامنة سحابية يديرها المطوّر. ولا يقوم Quotation Manager نفسه بمزامنة بيانات عملك بين الأجهزة.</p>
+      <p>نظرًا لأن بيانات عملك تُخزّن محليًا بواسطة التطبيق، فقد تكون مشمولة ضمن النسخ الاحتياطية التي تنشئها لجهازك — مثل النسخة الاحتياطية على iCloud أو نسخة احتياطية على حاسوب — تبعًا لإعدادات iOS/iPadOS ومعرّف Apple الخاص بك. يخضع سلوك النسخ الاحتياطي هذا لتحكم Apple وإعدادات جهازك، وليس لأي خدمة مزامنة سحابية يديرها المطوّر. ولا يقوم Quotara نفسه بمزامنة بيانات عملك بين الأجهزة.</p>
     </section>
 
     <section>
@@ -176,7 +185,7 @@
 
     <section>
       <h2>8. خصوصية الأطفال</h2>
-      <p>Quotation Manager أداة عمل عامة موجّهة لأصحاب الأعمال والمهنيين، وهو غير موجّه للأطفال. نحن لا نجمع عن قصد معلومات من الأطفال، والتطبيق غير مخصص لاستخدام الأطفال.</p>
+      <p>Quotara أداة عمل عامة موجّهة لأصحاب الأعمال والمهنيين، وهو غير موجّه للأطفال. نحن لا نجمع عن قصد معلومات من الأطفال، والتطبيق غير مخصص لاستخدام الأطفال.</p>
     </section>
 
     <section>
@@ -186,43 +195,49 @@
 
     <section>
       <h2>10. التواصل</h2>
-      <p>يمكنك التواصل مع المطوّر عبر بيانات الاتصال المتوفرة في صفحة Quotation Manager الرسمية على App Store.</p>
+      <p>يمكنك التواصل مع المطوّر عبر بيانات الاتصال المتوفرة في صفحة Quotara الرسمية على App Store.</p>
     </section>
+    <section>
+      <h2>11. البحث عن العناوين وخرائط Apple</h2>
+      <p>عند استخدام البحث عن العناوين، يرسل Quotara النص الذي تكتبه وطلبات النتائج المحددة إلى خرائط Apple للحصول على اقتراحات العناوين وتفاصيلها. تعالج Apple هذه الطلبات وفق ممارسات الخصوصية الخاصة بها. لا تطلب هذه الميزة الوصول إلى موقع جهازك. يمكنك إدخال العنوان يدويًا بدلاً من ذلك. فتح عنوان في الخرائط اختياري ويشارك ذلك العنوان مع خرائط Apple.</p>
+      <p><a href="https://www.apple.com/legal/privacy/data/en/apple-maps/">Apple Maps — Privacy</a></p>
+    </section>
+
   </div>
 
   <div class="lang" id="fr">
     <h1>Politique de confidentialité</h1>
-    <p class="subtitle">Quotation Manager · Date d’effet : 7 août 2026</p>
+    <p class="subtitle">Quotara · Date d’effet : 5 septembre 2026</p>
 
     <section>
       <h2>1. Informations stockées dans l’application</h2>
-      <p>Quotation Manager enregistre les informations commerciales que vous saisissez directement dans l’application, notamment les coordonnées des entreprises que vous créez (nom, coordonnées, adresses, logo, paramètres fiscaux), les informations client (noms, contacts, adresses), les contacts et adresses associés à vos entreprises et clients, les informations de devis (lignes, prix, quantités, taxes, remises et notes), ainsi que les données de catalogue et de listes de prix que vous configurez, et les préférences et réglages de l’application.</p>
+      <p>Quotara enregistre les informations commerciales que vous saisissez directement dans l’application, notamment les coordonnées des entreprises que vous créez (nom, coordonnées, adresses, logo, paramètres fiscaux), les informations client (noms, contacts, adresses), les contacts et adresses associés à vos entreprises et clients, les informations de devis (lignes, prix, quantités, taxes, remises et notes), ainsi que les données de catalogue et de listes de prix que vous configurez, et les préférences et réglages de l’application.</p>
     </section>
 
     <section>
       <h2>2. Stockage local</h2>
-      <p>Toutes ces informations sont stockées localement sur votre appareil par l’application. Quotation Manager ne transmet ni ne stocke ces informations sur des serveurs exploités par le développeur. Le développeur ne peut ni consulter, ni accéder, ni récupérer vos données professionnelles.</p>
+      <p>Toutes ces informations sont stockées localement sur votre appareil par l’application. Quotara ne transmet ni ne stocke ces informations sur des serveurs exploités par le développeur. Le développeur ne peut ni consulter, ni accéder, ni récupérer vos données professionnelles.</p>
     </section>
 
     <section>
       <h2>3. Génération et partage de PDF</h2>
-      <p>Quotation Manager génère des documents de devis au format PDF localement sur votre appareil. Le partage ou l’export d’un PDF n’a lieu que lorsque vous choisissez de le faire via la feuille de partage standard d’iOS. Une fois qu’un PDF est partagé avec une autre application, un service ou un contact, ce destinataire gère le fichier selon ses propres pratiques de confidentialité, non couvertes par cette politique.</p>
+      <p>Quotara génère des documents de devis au format PDF localement sur votre appareil. Le partage ou l’export d’un PDF n’a lieu que lorsque vous choisissez de le faire via la feuille de partage standard d’iOS. Une fois qu’un PDF est partagé avec une autre application, un service ou un contact, ce destinataire gère le fichier selon ses propres pratiques de confidentialité, non couvertes par cette politique.</p>
     </section>
 
     <section>
       <h2>4. Achats et abonnements</h2>
-      <p>Quotation Manager Pro est proposé sous forme d’abonnement renouvelable automatiquement, acheté et géré entièrement via l’App Store d’Apple avec StoreKit. Les achats sont traités par Apple ; le développeur ne reçoit pas vos détails de carte de paiement complets. Apple peut traiter vos informations de paiement, de compte et d’abonnement selon sa propre politique de confidentialité. L’application reçoit uniquement les informations de statut d’abonnement et d’habilitation nécessaires pour déverrouiller les fonctions Pro.</p>
-      <p>Comme les abonnements sont gérés par Apple, votre droit à Quotation Manager Pro peut être restauré sur un autre appareil connecté avec le même identifiant Apple via l’option « Restaurer les achats » intégrée à l’application. Cette restauration est distincte de vos données professionnelles ; vos entreprises, clients et devis ne sont pas synchronisés entre appareils par Quotation Manager.</p>
+      <p>Quotara Pro est proposé sous forme d’abonnement renouvelable automatiquement, acheté et géré entièrement via l’App Store d’Apple avec StoreKit. Les achats sont traités par Apple ; le développeur ne reçoit pas vos détails de carte de paiement complets. Apple peut traiter vos informations de paiement, de compte et d’abonnement selon sa propre politique de confidentialité. L’application reçoit uniquement les informations de statut d’abonnement et d’habilitation nécessaires pour déverrouiller les fonctions Pro.</p>
+      <p>Comme les abonnements sont gérés par Apple, votre droit à Quotara Pro peut être restauré sur un autre appareil connecté avec le même identifiant Apple via l’option « Restaurer les achats » intégrée à l’application. Cette restauration est distincte de vos données professionnelles ; vos entreprises, clients et devis ne sont pas synchronisés entre appareils par Quotara.</p>
     </section>
 
     <section>
       <h2>5. Suivi, analyses et publicité</h2>
-      <p>Quotation Manager n’affiche pas de publicité, ne vous suit pas entre les applications ou sites web d’autres entreprises, et n’utilise actuellement aucun SDK d’analyse ou de télémétrie. L’application ne vend pas vos données personnelles.</p>
+      <p>Quotara n’affiche pas de publicité, ne vous suit pas entre les applications ou sites web d’autres entreprises, et n’utilise actuellement aucun SDK d’analyse ou de télémétrie. L’application ne vend pas vos données personnelles.</p>
     </section>
 
     <section>
       <h2>6. Sauvegardes</h2>
-      <p>Comme vos données professionnelles sont stockées localement par l’application, elles peuvent être incluses dans les sauvegardes que vous réalisez de votre appareil, par exemple une sauvegarde iCloud ou une sauvegarde locale sur ordinateur, selon vos réglages iOS/iPadOS et votre identifiant Apple. Ce comportement de sauvegarde est contrôlé par Apple et la configuration de votre appareil, et non par un service de synchronisation cloud géré par le développeur. Quotation Manager ne synchronise pas lui-même vos données professionnelles entre appareils.</p>
+      <p>Comme vos données professionnelles sont stockées localement par l’application, elles peuvent être incluses dans les sauvegardes que vous réalisez de votre appareil, par exemple une sauvegarde iCloud ou une sauvegarde locale sur ordinateur, selon vos réglages iOS/iPadOS et votre identifiant Apple. Ce comportement de sauvegarde est contrôlé par Apple et la configuration de votre appareil, et non par un service de synchronisation cloud géré par le développeur. Quotara ne synchronise pas lui-même vos données professionnelles entre appareils.</p>
     </section>
 
     <section>
@@ -232,7 +247,7 @@
 
     <section>
       <h2>8. Confidentialité des enfants</h2>
-      <p>Quotation Manager est un outil professionnel destiné aux propriétaires d’entreprise et aux professionnels, et il n’est pas destiné aux enfants. Nous ne collectons pas sciemment de données auprès d’enfants, et l’application n’est pas prévue pour une utilisation par des enfants.</p>
+      <p>Quotara est un outil professionnel destiné aux propriétaires d’entreprise et aux professionnels, et il n’est pas destiné aux enfants. Nous ne collectons pas sciemment de données auprès d’enfants, et l’application n’est pas prévue pour une utilisation par des enfants.</p>
     </section>
 
     <section>
@@ -242,43 +257,49 @@
 
     <section>
       <h2>10. Contact</h2>
-      <p>Vous pouvez contacter le développeur via les coordonnées fournies dans la fiche officielle de Quotation Manager sur l’App Store.</p>
+      <p>Vous pouvez contacter le développeur via les coordonnées fournies dans la fiche officielle de Quotara sur l’App Store.</p>
     </section>
+    <section>
+      <h2>11. Recherche d’adresses et Apple Plans</h2>
+      <p>Lorsque vous recherchez une adresse, Quotara transmet le texte saisi et les demandes concernant les résultats sélectionnés à Apple Plans pour obtenir des suggestions et des détails. Apple traite ces demandes selon ses propres pratiques de confidentialité. Cette fonctionnalité ne demande pas l’accès à la position de votre appareil. Vous pouvez saisir une adresse manuellement. Ouvrir une adresse dans Plans est facultatif et partage cette adresse avec Apple Plans.</p>
+      <p><a href="https://www.apple.com/legal/privacy/data/en/apple-maps/">Apple Maps — Privacy</a></p>
+    </section>
+
   </div>
 
   <div class="lang" id="de">
     <h1>Datenschutzrichtlinie</h1>
-    <p class="subtitle">Quotation Manager · Gültig ab: 7. August 2026</p>
+    <p class="subtitle">Quotara · Gültig ab: 5. September 2026</p>
 
     <section>
       <h2>1. Informationen, die in der App gespeichert werden</h2>
-      <p>Quotation Manager speichert die Geschäftsinformationen, die Sie direkt in der App eingeben, einschließlich der von Ihnen erstellten Firmendaten (Name, Kontaktinformationen, Adressen, Logo, Steuer-Einstellungen), Kundendaten (Namen, Kontakte, Adressen), Kontakte und Adressen, die mit Ihren Unternehmen und Kunden verbunden sind, Angebotsinformationen (Positionen, Preise, Mengen, Steuern, Rabatte und Hinweise), Katalog- und Preisliste-Daten, die Sie konfigurieren, sowie App-Einstellungen und -Präferenzen.</p>
+      <p>Quotara speichert die Geschäftsinformationen, die Sie direkt in der App eingeben, einschließlich der von Ihnen erstellten Firmendaten (Name, Kontaktinformationen, Adressen, Logo, Steuer-Einstellungen), Kundendaten (Namen, Kontakte, Adressen), Kontakte und Adressen, die mit Ihren Unternehmen und Kunden verbunden sind, Angebotsinformationen (Positionen, Preise, Mengen, Steuern, Rabatte und Hinweise), Katalog- und Preisliste-Daten, die Sie konfigurieren, sowie App-Einstellungen und -Präferenzen.</p>
     </section>
 
     <section>
       <h2>2. Lokale Speicherung</h2>
-      <p>Alle diese Informationen werden lokal auf Ihrem Gerät von der App gespeichert. Quotation Manager überträgt diese Informationen nicht an Server des Entwicklers und speichert sie auch nicht darauf. Der Entwickler hat keine Möglichkeit, auf Ihre Geschäftsdaten zuzugreifen oder sie abzurufen.</p>
+      <p>Alle diese Informationen werden lokal auf Ihrem Gerät von der App gespeichert. Quotara überträgt diese Informationen nicht an Server des Entwicklers und speichert sie auch nicht darauf. Der Entwickler hat keine Möglichkeit, auf Ihre Geschäftsdaten zuzugreifen oder sie abzurufen.</p>
     </section>
 
     <section>
       <h2>3. PDF-Erstellung und Teilen</h2>
-      <p>Quotation Manager erzeugt Angebots-PDFs lokal auf Ihrem Gerät. Das Teilen oder Exportieren eines PDFs erfolgt nur, wenn Sie dies über den standardmäßigen iOS-Freigabebildschirm wählen. Sobald Sie ein PDF mit einer anderen App, einem Dienst oder einem Kontakt teilen, behandelt der Empfänger die Datei nach seinen eigenen Datenschutzpraktiken, die nicht von dieser Richtlinie abgedeckt werden.</p>
+      <p>Quotara erzeugt Angebots-PDFs lokal auf Ihrem Gerät. Das Teilen oder Exportieren eines PDFs erfolgt nur, wenn Sie dies über den standardmäßigen iOS-Freigabebildschirm wählen. Sobald Sie ein PDF mit einer anderen App, einem Dienst oder einem Kontakt teilen, behandelt der Empfänger die Datei nach seinen eigenen Datenschutzpraktiken, die nicht von dieser Richtlinie abgedeckt werden.</p>
     </section>
 
     <section>
       <h2>4. Käufe und Abonnements</h2>
-      <p>Quotation Manager Pro wird als automatisch erneuerbares Abonnement angeboten, das vollständig über den App Store von Apple über StoreKit gekauft und verwaltet wird. Käufe werden von Apple verarbeitet; der Entwickler erhält nicht Ihre vollständigen Kreditkartendaten. Apple kann Ihre Kauf-, Konto- und Abonnementinformationen nach eigener Datenschutzrichtlinie verarbeiten. Die App erhält nur die Abonnementstatus- und Berechtigungsinformationen, die zur Freischaltung von Pro-Funktionen erforderlich sind.</p>
-      <p>Da Abonnements von Apple verwaltet werden, kann Ihr Quotation-Manager-Pro-Recht auf einem anderen Gerät, das mit derselben Apple-ID angemeldet ist, über die integrierte Funktion „Käufe wiederherstellen“ in der App wiederhergestellt werden. Diese Wiederherstellung ist getrennt von Ihren Geschäftsdaten; Ihre Unternehmen, Kunden und Angebote werden von Quotation Manager nicht zwischen Geräten synchronisiert.</p>
+      <p>Quotara Pro wird als automatisch erneuerbares Abonnement angeboten, das vollständig über den App Store von Apple über StoreKit gekauft und verwaltet wird. Käufe werden von Apple verarbeitet; der Entwickler erhält nicht Ihre vollständigen Kreditkartendaten. Apple kann Ihre Kauf-, Konto- und Abonnementinformationen nach eigener Datenschutzrichtlinie verarbeiten. Die App erhält nur die Abonnementstatus- und Berechtigungsinformationen, die zur Freischaltung von Pro-Funktionen erforderlich sind.</p>
+      <p>Da Abonnements von Apple verwaltet werden, kann Ihr Quotation-Manager-Pro-Recht auf einem anderen Gerät, das mit derselben Apple-ID angemeldet ist, über die integrierte Funktion „Käufe wiederherstellen“ in der App wiederhergestellt werden. Diese Wiederherstellung ist getrennt von Ihren Geschäftsdaten; Ihre Unternehmen, Kunden und Angebote werden von Quotara nicht zwischen Geräten synchronisiert.</p>
     </section>
 
     <section>
       <h2>5. Verfolgung, Analysen und Werbung</h2>
-      <p>Quotation Manager zeigt keine Werbung, verfolgt Sie nicht über Apps oder Websites anderer Unternehmen hinweg und verwendet derzeit keine Analyse- oder Telemetrie-SDKs. Die App verkauft keine personenbezogenen Daten.</p>
+      <p>Quotara zeigt keine Werbung, verfolgt Sie nicht über Apps oder Websites anderer Unternehmen hinweg und verwendet derzeit keine Analyse- oder Telemetrie-SDKs. Die App verkauft keine personenbezogenen Daten.</p>
     </section>
 
     <section>
       <h2>6. Backups</h2>
-      <p>Da Ihre Geschäftsdaten lokal durch die App gespeichert werden, können sie in den Backups enthalten sein, die Sie von Ihrem Gerät erstellen, etwa ein iCloud-Backup oder ein lokales Computer-Backup, abhängig von Ihren iOS-/iPadOS-Einstellungen und Ihrer Apple-ID. Dieses Backup-Verhalten wird von Apple und Ihrer Gerätekonfiguration gesteuert, nicht von einem von einem Entwickler betriebenen Cloud-Synchronisierungsdienst. Quotation Manager synchronisiert Ihre Geschäftsdaten selbst nicht zwischen Geräten.</p>
+      <p>Da Ihre Geschäftsdaten lokal durch die App gespeichert werden, können sie in den Backups enthalten sein, die Sie von Ihrem Gerät erstellen, etwa ein iCloud-Backup oder ein lokales Computer-Backup, abhängig von Ihren iOS-/iPadOS-Einstellungen und Ihrer Apple-ID. Dieses Backup-Verhalten wird von Apple und Ihrer Gerätekonfiguration gesteuert, nicht von einem von einem Entwickler betriebenen Cloud-Synchronisierungsdienst. Quotara synchronisiert Ihre Geschäftsdaten selbst nicht zwischen Geräten.</p>
     </section>
 
     <section>
@@ -288,7 +309,7 @@
 
     <section>
       <h2>8. Datenschutz von Kindern</h2>
-      <p>Quotation Manager ist ein allgemeines Business-Tool für Unternehmensinhaber und Fachleute und nicht an Kinder gerichtet. Wir sammeln nicht wissentlich Informationen von Kindern, und die App ist nicht für die Nutzung durch Kinder gedacht.</p>
+      <p>Quotara ist ein allgemeines Business-Tool für Unternehmensinhaber und Fachleute und nicht an Kinder gerichtet. Wir sammeln nicht wissentlich Informationen von Kindern, und die App ist nicht für die Nutzung durch Kinder gedacht.</p>
     </section>
 
     <section>
@@ -298,43 +319,49 @@
 
     <section>
       <h2>10. Kontakt</h2>
-      <p>Sie können den Entwickler über die Kontaktangaben auf der offiziellen App-Store-Liste von Quotation Manager erreichen.</p>
+      <p>Sie können den Entwickler über die Kontaktangaben auf der offiziellen App-Store-Liste von Quotara erreichen.</p>
     </section>
+    <section>
+      <h2>11. Adresssuche und Apple Karten</h2>
+      <p>Bei der Adresssuche sendet Quotara Ihren eingegebenen Text und Anfragen zu ausgewählten Ergebnissen an Apple Karten, um Adressvorschläge und Details zu erhalten. Apple verarbeitet diese Anfragen nach seinen eigenen Datenschutzpraktiken. Diese Funktion fordert keinen Zugriff auf den Gerätestandort an. Sie können Adressen stattdessen manuell eingeben. Das Öffnen einer Adresse in Karten ist optional und übermittelt diese Adresse an Apple Karten.</p>
+      <p><a href="https://www.apple.com/legal/privacy/data/en/apple-maps/">Apple Maps — Privacy</a></p>
+    </section>
+
   </div>
 
   <div class="lang" id="es">
     <h1>Política de privacidad</h1>
-    <p class="subtitle">Quotation Manager · Fecha de entrada en vigor: 7 de agosto de 2026</p>
+    <p class="subtitle">Quotara · Fecha de entrada en vigor: 5 de septiembre de 2026</p>
 
     <section>
       <h2>1. Información almacenada en la app</h2>
-      <p>Quotation Manager almacena la información comercial que introduces directamente en la app, incluyendo los datos de empresa que creas (nombre, datos de contacto, direcciones, logo, ajustes fiscales), los datos de clientes (nombres, contactos, direcciones), los contactos y direcciones asociados a tus empresas y clientes, la información de presupuestos (líneas, precios, cantidades, impuestos, descuentos y notas), los datos de catálogo y listas de precios que configuras, así como las preferencias y ajustes de la app.</p>
+      <p>Quotara almacena la información comercial que introduces directamente en la app, incluyendo los datos de empresa que creas (nombre, datos de contacto, direcciones, logo, ajustes fiscales), los datos de clientes (nombres, contactos, direcciones), los contactos y direcciones asociados a tus empresas y clientes, la información de presupuestos (líneas, precios, cantidades, impuestos, descuentos y notas), los datos de catálogo y listas de precios que configuras, así como las preferencias y ajustes de la app.</p>
     </section>
 
     <section>
       <h2>2. Almacenamiento local</h2>
-      <p>Toda esta información se almacena localmente en tu dispositivo por la app. Quotation Manager no transmite esta información a servidores operados por el desarrollador ni la almacena en ellos. El desarrollador no puede ver, acceder ni recuperar tus datos empresariales.</p>
+      <p>Toda esta información se almacena localmente en tu dispositivo por la app. Quotara no transmite esta información a servidores operados por el desarrollador ni la almacena en ellos. El desarrollador no puede ver, acceder ni recuperar tus datos empresariales.</p>
     </section>
 
     <section>
       <h2>3. Generación y compartición de PDF</h2>
-      <p>Quotation Manager genera documentos de presupuesto en PDF localmente en tu dispositivo. Compartir o exportar un PDF solo ocurre cuando eliges hacerlo mediante la hoja de compartición estándar de iOS. Una vez que compartes un PDF con otra app, servicio o contacto, ese destinatario gestiona el archivo según sus propias prácticas de privacidad, que no están cubiertas por esta política.</p>
+      <p>Quotara genera documentos de presupuesto en PDF localmente en tu dispositivo. Compartir o exportar un PDF solo ocurre cuando eliges hacerlo mediante la hoja de compartición estándar de iOS. Una vez que compartes un PDF con otra app, servicio o contacto, ese destinatario gestiona el archivo según sus propias prácticas de privacidad, que no están cubiertas por esta política.</p>
     </section>
 
     <section>
       <h2>4. Compras y suscripciones</h2>
-      <p>Quotation Manager Pro se ofrece como una suscripción renovable automáticamente, comprada y gestionada íntegramente a través de la App Store de Apple con StoreKit. Las compras las procesa Apple; el desarrollador no recibe tus datos completos de tarjeta de pago. Apple puede procesar tus datos de compra, cuenta y suscripción según su propia política de privacidad. La app solo recibe la información de estado de suscripción y de habilitación necesaria para activar las funciones Pro.</p>
-      <p>Como las suscripciones las gestiona Apple, tu derecho a Quotation Manager Pro se puede restaurar en otro dispositivo con la misma ID de Apple mediante la opción de restaurar compras integrada en la app. Esta restauración es independiente de tus datos empresariales; Quotation Manager no sincroniza tus empresas, clientes o presupuestos entre dispositivos.</p>
+      <p>Quotara Pro se ofrece como una suscripción renovable automáticamente, comprada y gestionada íntegramente a través de la App Store de Apple con StoreKit. Las compras las procesa Apple; el desarrollador no recibe tus datos completos de tarjeta de pago. Apple puede procesar tus datos de compra, cuenta y suscripción según su propia política de privacidad. La app solo recibe la información de estado de suscripción y de habilitación necesaria para activar las funciones Pro.</p>
+      <p>Como las suscripciones las gestiona Apple, tu derecho a Quotara Pro se puede restaurar en otro dispositivo con la misma ID de Apple mediante la opción de restaurar compras integrada en la app. Esta restauración es independiente de tus datos empresariales; Quotara no sincroniza tus empresas, clientes o presupuestos entre dispositivos.</p>
     </section>
 
     <section>
       <h2>5. Seguimiento, análisis y publicidad</h2>
-      <p>Quotation Manager no muestra anuncios, no te rastrea entre las apps o sitios web de otras empresas y actualmente no usa ningún SDK de análisis o telemetría. La app no vende tus datos personales.</p>
+      <p>Quotara no muestra anuncios, no te rastrea entre las apps o sitios web de otras empresas y actualmente no usa ningún SDK de análisis o telemetría. La app no vende tus datos personales.</p>
     </section>
 
     <section>
       <h2>6. Copias de seguridad</h2>
-      <p>Como tus datos empresariales se almacenan localmente en la app, pueden incluirse en las copias de seguridad que hagas de tu dispositivo, por ejemplo una copia en iCloud o una copia local en un ordenador, según tu configuración de iOS/iPadOS y tu ID de Apple. Este comportamiento de copia de seguridad lo controla Apple y la configuración de tu dispositivo, no un servicio de sincronización en la nube operado por el desarrollador. Quotation Manager no sincroniza tus datos empresariales entre dispositivos.</p>
+      <p>Como tus datos empresariales se almacenan localmente en la app, pueden incluirse en las copias de seguridad que hagas de tu dispositivo, por ejemplo una copia en iCloud o una copia local en un ordenador, según tu configuración de iOS/iPadOS y tu ID de Apple. Este comportamiento de copia de seguridad lo controla Apple y la configuración de tu dispositivo, no un servicio de sincronización en la nube operado por el desarrollador. Quotara no sincroniza tus datos empresariales entre dispositivos.</p>
     </section>
 
     <section>
@@ -344,7 +371,7 @@
 
     <section>
       <h2>8. Privacidad infantil</h2>
-      <p>Quotation Manager es una herramienta empresarial general dirigida a dueños de negocios y profesionales, y no está dirigida a niños. No recopilamos conscientemente información de niños, y la app no está pensada para su uso por menores.</p>
+      <p>Quotara es una herramienta empresarial general dirigida a dueños de negocios y profesionales, y no está dirigida a niños. No recopilamos conscientemente información de niños, y la app no está pensada para su uso por menores.</p>
     </section>
 
     <section>
@@ -354,43 +381,49 @@
 
     <section>
       <h2>10. Contacto</h2>
-      <p>Puedes contactar con el desarrollador a través de los datos de contacto incluidos en la ficha oficial de Quotation Manager en la App Store.</p>
+      <p>Puedes contactar con el desarrollador a través de los datos de contacto incluidos en la ficha oficial de Quotara en la App Store.</p>
     </section>
+    <section>
+      <h2>11. Búsqueda de direcciones y Mapas de Apple</h2>
+      <p>Cuando utilizas la búsqueda de direcciones, Quotara envía el texto que escribes y las solicitudes de los resultados seleccionados a Mapas de Apple para obtener sugerencias y detalles. Apple procesa estas solicitudes según sus propias prácticas de privacidad. Esta función no solicita acceso a la ubicación del dispositivo. Puedes introducir una dirección manualmente. Abrir una dirección en Mapas es opcional y comparte esa dirección con Mapas de Apple.</p>
+      <p><a href="https://www.apple.com/legal/privacy/data/en/apple-maps/">Apple Maps — Privacy</a></p>
+    </section>
+
   </div>
 
   <div class="lang" id="it">
     <h1>Informativa sulla privacy</h1>
-    <p class="subtitle">Quotation Manager · Data di entrata in vigore: 7 agosto 2026</p>
+    <p class="subtitle">Quotara · Data di entrata in vigore: 5 settembre 2026</p>
 
     <section>
       <h2>1. Informazioni archiviate nell’app</h2>
-      <p>Quotation Manager memorizza le informazioni aziendali che inserisci direttamente nell’app, incluse i dati delle aziende che crei (nome, informazioni di contatto, indirizzi, logo, impostazioni fiscali), i dati dei clienti (nomi, contatti, indirizzi), i contatti e gli indirizzi associati alle tue aziende e ai tuoi clienti, le informazioni sui preventivi (voci, prezzi, quantità, tasse, sconti e note), i dati di catalogo e liste prezzi che configuri, oltre alle preferenze e alle impostazioni dell’app.</p>
+      <p>Quotara memorizza le informazioni aziendali che inserisci direttamente nell’app, incluse i dati delle aziende che crei (nome, informazioni di contatto, indirizzi, logo, impostazioni fiscali), i dati dei clienti (nomi, contatti, indirizzi), i contatti e gli indirizzi associati alle tue aziende e ai tuoi clienti, le informazioni sui preventivi (voci, prezzi, quantità, tasse, sconti e note), i dati di catalogo e liste prezzi che configuri, oltre alle preferenze e alle impostazioni dell’app.</p>
     </section>
 
     <section>
       <h2>2. Archiviazione locale</h2>
-      <p>Tutte queste informazioni vengono archiviate localmente sul tuo dispositivo dall’app. Quotation Manager non trasmette queste informazioni a server gestiti dallo sviluppatore né le memorizza su di essi. Lo sviluppatore non ha alcuna possibilità di visualizzare, accedere o recuperare i tuoi dati aziendali.</p>
+      <p>Tutte queste informazioni vengono archiviate localmente sul tuo dispositivo dall’app. Quotara non trasmette queste informazioni a server gestiti dallo sviluppatore né le memorizza su di essi. Lo sviluppatore non ha alcuna possibilità di visualizzare, accedere o recuperare i tuoi dati aziendali.</p>
     </section>
 
     <section>
       <h2>3. Generazione e condivisione di PDF</h2>
-      <p>Quotation Manager genera documenti di preventivo in PDF localmente sul tuo dispositivo. La condivisione o l’esportazione di un PDF avviene solo quando scegli di farlo tramite la schermata standard di condivisione di iOS. Una volta che condividi un PDF con un’altra app, un servizio o un contatto, il destinatario gestisce il file in base alle proprie pratiche sulla privacy, non coperte da questa informativa.</p>
+      <p>Quotara genera documenti di preventivo in PDF localmente sul tuo dispositivo. La condivisione o l’esportazione di un PDF avviene solo quando scegli di farlo tramite la schermata standard di condivisione di iOS. Una volta che condividi un PDF con un’altra app, un servizio o un contatto, il destinatario gestisce il file in base alle proprie pratiche sulla privacy, non coperte da questa informativa.</p>
     </section>
 
     <section>
       <h2>4. Acquisti e abbonamenti</h2>
-      <p>Quotation Manager Pro è offerto come abbonamento rinnovabile automaticamente, acquistato e gestito completamente tramite l’App Store di Apple con StoreKit. Gli acquisti vengono elaborati da Apple; lo sviluppatore non riceve i dettagli completi della tua carta di pagamento. Apple può elaborare le informazioni relative agli acquisti, all’account e all’abbonamento secondo la propria informativa sulla privacy. L’app riceve solo le informazioni sullo stato dell’abbonamento e sull’abilitazione necessarie per sbloccare le funzioni Pro.</p>
-      <p>Poiché gli abbonamenti sono gestiti da Apple, il tuo diritto a Quotation Manager Pro può essere ripristinato su un altro dispositivo con lo stesso ID Apple tramite l’opzione “Ripristina acquisti” integrata nell’app. Questa ripristinazione è separata dai tuoi dati aziendali; Quotation Manager non sincronizza le tue aziende, i clienti o i preventivi tra dispositivi.</p>
+      <p>Quotara Pro è offerto come abbonamento rinnovabile automaticamente, acquistato e gestito completamente tramite l’App Store di Apple con StoreKit. Gli acquisti vengono elaborati da Apple; lo sviluppatore non riceve i dettagli completi della tua carta di pagamento. Apple può elaborare le informazioni relative agli acquisti, all’account e all’abbonamento secondo la propria informativa sulla privacy. L’app riceve solo le informazioni sullo stato dell’abbonamento e sull’abilitazione necessarie per sbloccare le funzioni Pro.</p>
+      <p>Poiché gli abbonamenti sono gestiti da Apple, il tuo diritto a Quotara Pro può essere ripristinato su un altro dispositivo con lo stesso ID Apple tramite l’opzione “Ripristina acquisti” integrata nell’app. Questa ripristinazione è separata dai tuoi dati aziendali; Quotara non sincronizza le tue aziende, i clienti o i preventivi tra dispositivi.</p>
     </section>
 
     <section>
       <h2>5. Tracciamento, analisi e pubblicità</h2>
-      <p>Quotation Manager non mostra pubblicità, non ti traccia tra app o siti web di altre aziende e attualmente non utilizza SDK di analisi o telemetria. L’app non vende i tuoi dati personali.</p>
+      <p>Quotara non mostra pubblicità, non ti traccia tra app o siti web di altre aziende e attualmente non utilizza SDK di analisi o telemetria. L’app non vende i tuoi dati personali.</p>
     </section>
 
     <section>
       <h2>6. Backup</h2>
-      <p>Poiché i tuoi dati aziendali vengono archiviati localmente dall’app, possono essere inclusi nei backup che esegui del tuo dispositivo, ad esempio un backup iCloud o un backup locale su computer, in base alle impostazioni iOS/iPadOS e al tuo ID Apple. Questo comportamento di backup è controllato da Apple e dalla configurazione del dispositivo, non da un servizio di sincronizzazione cloud gestito dallo sviluppatore. Quotation Manager non sincronizza i tuoi dati aziendali tra dispositivi.</p>
+      <p>Poiché i tuoi dati aziendali vengono archiviati localmente dall’app, possono essere inclusi nei backup che esegui del tuo dispositivo, ad esempio un backup iCloud o un backup locale su computer, in base alle impostazioni iOS/iPadOS e al tuo ID Apple. Questo comportamento di backup è controllato da Apple e dalla configurazione del dispositivo, non da un servizio di sincronizzazione cloud gestito dallo sviluppatore. Quotara non sincronizza i tuoi dati aziendali tra dispositivi.</p>
     </section>
 
     <section>
@@ -400,7 +433,7 @@
 
     <section>
       <h2>8. Privacy dei minori</h2>
-      <p>Quotation Manager è uno strumento aziendale generico destinato a imprenditori e professionisti e non è rivolto ai minori. Non raccogliamo consapevolmente informazioni da minori e l’app non è pensata per l’uso da parte di bambini.</p>
+      <p>Quotara è uno strumento aziendale generico destinato a imprenditori e professionisti e non è rivolto ai minori. Non raccogliamo consapevolmente informazioni da minori e l’app non è pensata per l’uso da parte di bambini.</p>
     </section>
 
     <section>
@@ -410,8 +443,14 @@
 
     <section>
       <h2>10. Contatto</h2>
-      <p>Puoi contattare lo sviluppatore tramite i recapiti riportati nella scheda ufficiale di Quotation Manager sull’App Store.</p>
+      <p>Puoi contattare lo sviluppatore tramite i recapiti riportati nella scheda ufficiale di Quotara sull’App Store.</p>
     </section>
+    <section>
+      <h2>11. Ricerca di indirizzi e Mappe di Apple</h2>
+      <p>Quando usi la ricerca di indirizzi, Quotara invia il testo digitato e le richieste relative ai risultati selezionati a Mappe di Apple per ottenere suggerimenti e dettagli. Apple elabora queste richieste secondo le proprie pratiche sulla privacy. Questa funzione non richiede accesso alla posizione del dispositivo. Puoi inserire un indirizzo manualmente. Aprire un indirizzo in Mappe è facoltativo e condivide tale indirizzo con Mappe di Apple.</p>
+      <p><a href="https://www.apple.com/legal/privacy/data/en/apple-maps/">Apple Maps — Privacy</a></p>
+    </section>
+
   </div>
 
   <footer>
